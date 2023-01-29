@@ -1,0 +1,7 @@
+.active-menu-link {
+    border-bottom: 1px solid deeppink;
+}
+
+.default-menu-link {
+    border-bottom: none;
+}
