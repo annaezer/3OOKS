@@ -1,15 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './SignUp.css';
 import {useForm} from 'react-hook-form'
-import InputComponent from "../../components/InputComponent";
+import InputComponent from "../../components/input/InputComponent";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 function SignUp() {
     // I choose for React Hook Form here cuz of easy validation
 
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const [loading, toggleLoading] = useState(false);
+    const [error, toggleError] = useState(false);
+    const [errorMessage, setErrorMessage] =useState("");
+    const [succesMessage, setSuccesMessage] =useState("");
+    const navigate = useNavigate();
 
-    function handleFormSubmit(data) {
-        console.log(data);
+    async function handleFormSubmit(data) {
+        toggleLoading(true);
+        toggleError(false);
+
+        try {
+            const response = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signup", {
+                username: data.name,
+                email: data.email,
+                password: data.password,
+                role: ["user"]
+            })
+            console.log(response.data.message);
+            setSuccesMessage(response.data.message);
+            setTimeout(()=>{
+                navigate("/login")
+            }, 2000)
+
+        } catch (e) {
+            toggleError(true);
+            console.error(e);
+            setErrorMessage(e.response.data.message);
+        }
+        toggleLoading(false);
     }
 
     return (
@@ -82,14 +110,14 @@ function SignUp() {
                     errors={errors}
                 />
 
-                <button type="submit">Sign up</button>
+                {error && <p>{errorMessage}</p>}
+                {!error && <p>{succesMessage}</p>}
+
+                <button type="submit" disabled={loading}>Sign up</button>
 
             </form>
         </>
     );
 }
-
-// Wanneer je een gebruiker probeert te registreren met een username die al bestaat, krijg je een foutcode. De details over deze foutmelding vindt je in e.response.
-//     Indien de registratie succesvol was, ontvang je een succesmelding.
 
 export default SignUp;
