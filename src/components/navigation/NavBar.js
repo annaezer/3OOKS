@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import './NavBar.css';
 import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
+import Button from "../button/Button";
 
 function NavBar() {
     // For conditional showing of log in and sign up when authentication is false and favourites and log out when authentication is true I need useContext
@@ -29,7 +30,12 @@ function NavBar() {
                         :
                         <>
                     <span className="material-symbols-outlined"><NavLink to='/favourites'>favorite</NavLink></span>
-                <button type="button" onClick={()=> logout()}>Log out</button>
+                <Button
+                    type="button"
+                    clickHandler={()=> logout()}
+                >
+                    Log out
+                </Button>
                         </>
                     }
                 </ul>

@@ -9,7 +9,7 @@ import {AuthContext} from "../../context/AuthContext";
 
 function LogIn() {
 // I use React Hook Form again cuz I use it in Sign up and want to be consistent
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, reset, formState: {errors}} = useForm({ mode: 'onBlur' });
 
     // I use useState to make sure I can put the error messages in the UI
     const [loading, toggleLoading] = useState(false);
@@ -34,8 +34,9 @@ function LogIn() {
 
         } catch (e) {
             toggleError(true);
-            console.error(e);
-            // setErrorMessage(e.response.data.message);
+            console.error(e.response);
+            setErrorMessage("This combination is not valid, please try again");
+            reset();
         }
         toggleLoading(false);
     }
@@ -56,6 +57,14 @@ function LogIn() {
                         required: {
                             value: true,
                             message: "This field is required"
+                        },
+                        minLength: {
+                            value: 6,
+                            message: "Your name needs to be at least 6 characters"
+                        },
+                        maxLength: {
+                            value: 15,
+                            message: "Your name can not be longer than 15 characters"
                         }
                     }}
                     register={register}
@@ -71,22 +80,31 @@ function LogIn() {
                         required: {
                             value: true,
                             message: "This field is required"
+                        },
+                        minLength: {
+                            value: 6,
+                            message: "Your password needs to be at least 6 characters"
+                        },
+                        maxLength: {
+                            value: 15,
+                            message: "Your password can not be longer than 15 characters"
                         }
                     }}
                     register={register}
                     errors={errors}
                 />
 
-                {/*Showing either the error or succes message in UI*/}
+                {/*Showing the error message in UI*/}
                 {error && <p>{errorMessage}</p>}
-                {!error && <p>You're logged in!</p>}
+
 
 
                 <Button
                     type="submit"
                     disabled={loading}
-                    name="Log in"
-                />
+                    >
+                    Log in
+                </Button>
 
             </form>
         </>

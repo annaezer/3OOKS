@@ -1,12 +1,14 @@
 import React from 'react';
 
-function Button({type, disabled, name}) {
+function Button({type, disabled, children, className, clickHandler}) {
     return (
         <button
             type={type}
             disabled={disabled}
+            className={className}
+            onClick={clickHandler}
         >
-            {name}
+            {children}
         </button>
     );
 }

@@ -1,6 +1,6 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 
 export const AuthContext = createContext({});
 
@@ -12,20 +12,18 @@ function AuthContextProvider({children}) {
 
     function logIn(token) {
         console.log("User is logged in");
-        localStorage.setItem('token', token);
+        localStorage.setItem("token", token);
         const decoded = jwt_decode(token);
         console.log(decoded);
         setAuth(true);
-        setTimeout(() => {
-            navigate("/favourites")
-        }, 1000)
+        navigate("/favourites")
     }
 
     function logOut() {
         console.log("User is logged out");
-        localStorage.removeItem('token');
-        setAuth (false);
-        navigate('/');
+        localStorage.removeItem("token");
+        setAuth(false);
+        navigate("/");
     }
 
     const data = {
