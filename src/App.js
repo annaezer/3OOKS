@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './App.css';
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
@@ -13,8 +13,12 @@ import Database from "./pages/searchDatabase/Database";
 import Questions from "./pages/searchQuestions/Questions";
 import NavBar from "./components/navigation/NavBar";
 import Footer from "./components/footer/Footer";
+import {AuthContext} from "./context/AuthContext";
 
 function App() {
+
+    const {auth} = useContext(AuthContext);
+
     return (
         <>
             <NavBar/>
@@ -23,7 +27,10 @@ function App() {
                 <Route path="*" element={<PageNotFound/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
-                <Route path="/favourites" element={<Favourites/>}/>
+
+                {/*Private route made for Favourites, with the use of useContext to be able to see if someone is logged in*/}
+                <Route path="/favourites" element={auth ? <Favourites/> : <Navigate to="/login"/>}/>
+
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/bestsellers" element={<Bestsellers/>}/>

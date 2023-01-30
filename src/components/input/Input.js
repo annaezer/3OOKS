@@ -1,4 +1,4 @@
-function InputComponent({ inputType, inputName, inputLabel, inputId, validationRules, register, errors }) {
+function Input({ inputType, inputName, inputLabel, inputId, validationRules, register, errors }) {
     return (
         <>
             <label htmlFor={inputId}>
@@ -14,4 +14,4 @@ function InputComponent({ inputType, inputName, inputLabel, inputId, validationR
     );
 }
 
-export default InputComponent;
+export default Input;

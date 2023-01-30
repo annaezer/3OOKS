@@ -4,9 +4,10 @@ import './PageNotFound.css';
 
 function PageNotFound() {
 
+// Making sure the user is redirected automatically to the homepage when typing an unknown url
     const navigate = useNavigate()
 
-    setTimeout(()=>{
+    setTimeout(() => {
         navigate("/")
     }, 3000)
 

@@ -1,20 +1,29 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './SignUp.css';
 import {useForm} from 'react-hook-form'
-import InputComponent from "../../components/input/InputComponent";
+import Input from "../../components/input/Input";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Button from "../../components/button/Button";
+import {AuthContext} from "../../context/AuthContext";
 
 function SignUp() {
-    // I choose for React Hook Form here cuz of easy validation
 
+    const {setAuth} = useContext(AuthContext);
+
+    // I choose for React Hook Form here cuz of easy validation
     const {register, handleSubmit, formState: {errors}} = useForm();
+
+    // I use useState to make sure I can put the error messages in the UI
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
-    const [errorMessage, setErrorMessage] =useState("");
-    const [succesMessage, setSuccesMessage] =useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [succesMessage, setSuccesMessage] = useState("");
+
+    // When sign up is successfully I want to redirect my user to private favourites page
     const navigate = useNavigate();
 
+    // Async function to handle my axios post request to the backend
     async function handleFormSubmit(data) {
         toggleLoading(true);
         toggleError(false);
@@ -28,9 +37,10 @@ function SignUp() {
             })
             console.log(response.data.message);
             setSuccesMessage(response.data.message);
-            setTimeout(()=>{
-                navigate("/login")
-            }, 2000)
+            setTimeout(() => {
+                navigate("/favourites")
+            }, 1000)
+            setAuth(true);
 
         } catch (e) {
             toggleError(true);
@@ -48,7 +58,8 @@ function SignUp() {
 
             <form onSubmit={handleSubmit(handleFormSubmit)}>
 
-                <InputComponent
+                {/*I made a component from the input so I can re-use it*/}
+                <Input
                     inputType="text"
                     inputName="name"
                     inputId="name-field"
@@ -71,7 +82,7 @@ function SignUp() {
                     errors={errors}
                 />
 
-                <InputComponent
+                <Input
                     inputType="email"
                     inputName="email"
                     inputId="email-field"
@@ -87,7 +98,7 @@ function SignUp() {
                     errors={errors}
                 />
 
-                <InputComponent
+                <Input
                     inputType="password"
                     inputName="password"
                     inputId="password-field"
@@ -109,11 +120,15 @@ function SignUp() {
                     register={register}
                     errors={errors}
                 />
-
+                {/*Showing either the error or succes message in UI*/}
                 {error && <p>{errorMessage}</p>}
                 {!error && <p>{succesMessage}</p>}
 
-                <button type="submit" disabled={loading}>Sign up</button>
+                <Button
+                    type="submit"
+                    disabled={loading}
+                    name="Sign up"
+                />
 
             </form>
         </>
