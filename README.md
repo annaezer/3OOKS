@@ -1,7 +1,11 @@
 # Waar gaat mijn project over
 Screenshot
 Beschrijven hoe andere developers mijn project kunnen runnen
+voeg je in de README.md een begeleidende tekst toe waarin je de gebruiker instrueert een eigen .env bestand aan te maken en deze te vullen met de variabel-namen zoals beschreven in env.dist. Uiteraard benoem je ook het maken van een build, en waar de gebruiker aan deze variabelen kan komen.
 
+
+
+Let op: voor jouw eindproject deel je altijd jouw eigen API keys in de installatiehandleiding, zodat de examinator niet zelf een key hoeft aan te maken.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

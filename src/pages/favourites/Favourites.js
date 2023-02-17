@@ -1,5 +1,5 @@
-import React from 'react';
-import './Favourites.css';
+import React from "react";
+import "./Favourites.css";
 
 function Favourites() {
     return (

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import './Contact.css';
+import React, {useState} from "react";
+import "./Contact.css";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import {useForm} from "react-hook-form";

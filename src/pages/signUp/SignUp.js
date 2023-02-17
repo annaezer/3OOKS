@@ -12,7 +12,7 @@ function SignUp() {
     const {setAuth} = useContext(AuthContext);
 
     // I choose for React Hook Form here cuz of easy validation
-    const {register, handleSubmit, reset, formState: {errors}} = useForm({ mode: 'onBlur' });
+    const {register, handleSubmit, reset, formState: {errors}} = useForm({mode: "onBlur"});
 
     // I use useState to make sure I can put the error messages in the UI
     const [loading, toggleLoading] = useState(false);
@@ -95,7 +95,7 @@ function SignUp() {
                             message: "This field is required"
                         },
                         pattern: {
-                            value:/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                            value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                             message: "Email must contain '@'"
                         }
                     }}
@@ -132,7 +132,7 @@ function SignUp() {
                 <Button
                     type="submit"
                     disabled={loading}
-                   >
+                >
                     Sign up
                 </Button>
 

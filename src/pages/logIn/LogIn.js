@@ -1,5 +1,5 @@
-import React, {useContext, useState} from 'react';
-import './LogIn.css';
+import React, {useContext, useState} from "react";
+import "./LogIn.css";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import axios from "axios";
@@ -9,7 +9,7 @@ import {AuthContext} from "../../context/AuthContext";
 
 function LogIn() {
 // I use React Hook Form again cuz I use it in Sign up and want to be consistent
-    const {register, handleSubmit, reset, formState: {errors}} = useForm({ mode: 'onBlur' });
+    const {register, handleSubmit, reset, formState: {errors}} = useForm({mode: "onBlur"});
 
     // I use useState to make sure I can put the error messages in the UI
     const [loading, toggleLoading] = useState(false);
@@ -98,11 +98,10 @@ function LogIn() {
                 {error && <p>{errorMessage}</p>}
 
 
-
                 <Button
                     type="submit"
                     disabled={loading}
-                    >
+                >
                     Log in
                 </Button>
 

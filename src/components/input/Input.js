@@ -1,3 +1,6 @@
+import React from "react";
+import "./Input.css";
+
 function Input({ inputType, inputName, inputLabel, inputId, validationRules, register, errors }) {
     return (
         <>
