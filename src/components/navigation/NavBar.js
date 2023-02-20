@@ -5,7 +5,7 @@ import {AuthContext} from "../../context/AuthContext";
 import Button from "../button/Button";
 
 function NavBar() {
-    // For conditional showing of log in and sign up when authentication is false and favourites and log out when authentication is true I need useContext
+    // For conditional showing of "log in" and "sign up" when authentication is false, and "favourites" and "log out button" when authentication is true I need useContext
     const {auth, user, logout} = useContext(AuthContext);
     console.log(auth);
 

@@ -4,8 +4,10 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 
 function Bestsellers() {
+    // Creating state so I can save the data I get from my GET request
     const [bestsellers, setBestsellers] = useState([]);
 
+    // I use mounting effect to prevent memory leak
     useEffect(() => {
 
         async function fetchData() {
@@ -18,7 +20,7 @@ function Bestsellers() {
             }
         }
 
-        fetchData();
+        void fetchData();
     }, [])
 
     return (

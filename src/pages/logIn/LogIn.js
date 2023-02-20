@@ -8,7 +8,7 @@ import Button from "../../components/button/Button";
 import {AuthContext} from "../../context/AuthContext";
 
 function LogIn() {
-// I use React Hook Form again cuz I use it in Sign up and want to be consistent
+// I use React Hook Form again because I use it in Sign up and want to be consistent
     const {register, handleSubmit, reset, formState: {errors}} = useForm({mode: "onBlur"});
 
     // I use useState to make sure I can put the error messages in the UI
@@ -19,6 +19,7 @@ function LogIn() {
     // I use the context to access the login function
     const {login} = useContext(AuthContext);
 
+    // Create an asynchronic function for my POST request to the backend, which receives the data object from the React Hook Form to access the values from the inputfields
     async function handleFormSubmit(data) {
         toggleLoading(true);
         toggleError(false);
@@ -37,6 +38,7 @@ function LogIn() {
             toggleError(true);
             console.error(e.response);
             setErrorMessage("This combination is not valid, please try again");
+            // Use reset functionality from Hook Form so I can empty the fields for the user to try again
             reset();
         }
         toggleLoading(false);
@@ -47,8 +49,10 @@ function LogIn() {
             <h1>Login</h1>
             <p>No account yet? Sign up <Link to="/signup">here</Link></p>
 
+            {/*I use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
             <form onSubmit={handleSubmit(handleFormSubmit)}>
 
+                {/*Using the Input component again for convenience*/}
                 <Input
                     inputType="text"
                     inputName="name"

@@ -21,16 +21,16 @@ function App() {
 
     return (
         <>
+            {/*I want the navigation bar on all the pages so I put it before Routes, same goes for Footer*/}
             <NavBar/>
+            {/*Implement routing structure*/}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="*" element={<PageNotFound/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
-
                 {/*Private route made for Favourites, with the use of useContext to be able to see if someone is logged in*/}
                 <Route path="/favourites" element={auth ? <Favourites/> : <Navigate to="/login"/>}/>
-
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/bestsellers" element={<Bestsellers/>}/>
