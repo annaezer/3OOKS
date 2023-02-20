@@ -30,6 +30,7 @@ function LogIn() {
             })
             console.log(response);
             const token = response.data.accessToken;
+            // Pass on my token to the Context
             login(token);
 
         } catch (e) {

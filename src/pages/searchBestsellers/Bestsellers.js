@@ -17,6 +17,7 @@ function Bestsellers() {
                 console.error(e);
             }
         }
+
         fetchData();
     }, [])
 
@@ -30,12 +31,13 @@ function Bestsellers() {
                 <section className="outer-content-container">
                     <div className="inner-content-container">
                         <h2>Results</h2>
-                        <h4>The three bestselling books of the moment</h4>
+                        <h4>The three New York Times bestselling books of the moment</h4>
                         <div className="result-container">
                             {/*Get only three results out of the 15 I get from the call using method slice*/}
-                            {bestsellers.slice(0,3).map((bestseller) => {
+                            {bestsellers.slice(0, 3).map((bestseller) => {
                                 return (
                                     <article className="bestseller-article" key={bestseller.primary_isbn10}>
+                                        <img src={bestseller.book_image} alt="bestselling book"/>
                                         <a href={bestseller.amazon_product_url}>
                                             <h3>Title: {bestseller.title}</h3>
                                         </a>

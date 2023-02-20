@@ -1,15 +1,12 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import './SignUp.css';
 import {useForm} from 'react-hook-form'
 import Input from "../../components/input/Input";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import Button from "../../components/button/Button";
-import {AuthContext} from "../../context/AuthContext";
 
 function SignUp() {
-
-    const {setAuth} = useContext(AuthContext);
 
     // I choose for React Hook Form here cuz of easy validation
     const {register, handleSubmit, reset, formState: {errors}} = useForm({mode: "onBlur"});
@@ -35,13 +32,12 @@ function SignUp() {
                 password: data.password,
                 role: ["user"]
             })
-            console.log(response.data.message);
+            console.log(response);
             setSuccesMessage(response.data.message);
             reset();
             setTimeout(() => {
-                navigate("/favourites")
+                navigate("/login")
             }, 2000)
-            setAuth(true);
 
         } catch (e) {
             toggleError(true);

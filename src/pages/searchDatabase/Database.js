@@ -3,6 +3,7 @@ import './Database.css';
 import {Link} from "react-router-dom";
 
 function Database() {
+
     return (
         <>
             <h1>Database</h1>
