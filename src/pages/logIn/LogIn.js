@@ -23,7 +23,6 @@ function LogIn() {
     async function handleFormSubmit(data) {
         toggleLoading(true);
         toggleError(false);
-
         try {
             const response = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signin", {
                 username: data.name,
@@ -33,7 +32,6 @@ function LogIn() {
             const token = response.data.accessToken;
             // Pass on my token to the Context
             login(token);
-
         } catch (e) {
             toggleError(true);
             console.error(e.response);
@@ -101,7 +99,6 @@ function LogIn() {
 
                 {/*Showing the error message in UI*/}
                 {error && <p>{errorMessage}</p>}
-
 
                 <Button
                     type="submit"
