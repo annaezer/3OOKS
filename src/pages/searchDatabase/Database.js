@@ -11,30 +11,30 @@ function Database() {
     // I use React Hook Form again because I want to be consistent
     const {register, handleSubmit, reset, formState: {errors}} = useForm();
 
-    // I use useState to make sure I can put the error messages in the UI
+    // I use useState to make sure I can put the error messages in the UI and save my data from the get request
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
     const [results, setResults] = useState([]);
 
-        // Create an asynchronic function for my get request to the Books API, which receives the data object from the React Hook Form to access the values from the inputfield
-        async function handleSearch(data) {
-            console.log(data);
-            toggleLoading(true);
-         try {
-                toggleError(false);
-                const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${data.search}&key=${process.env.REACT_APP_API_KEY}&maxResults=3`)
-                console.log(response);
-                // Save the results array in the state
-                setResults(response.data.items);
-                // Use reset functionality from Hook Form so I can empty the fields for the user to try again
-                reset();
-            } catch (e) {
-                toggleError(true);
-                console.error(e);
-                reset();
-            }
-            toggleLoading(false);
+    // Create an asynchronic function for my get request to the Books API, which receives the data object from the React Hook Form to access the values from the inputfield
+    async function handleSearch(data) {
+        console.log(data);
+        toggleLoading(true);
+        try {
+            toggleError(false);
+            const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${data.search}&key=${process.env.REACT_APP_API_KEY}&maxResults=3`)
+            console.log(response);
+            // Save the results array in the state
+            setResults(response.data.items);
+            // Use reset functionality from Hook Form so I can empty the fields for the user to try again
+            reset();
+        } catch (e) {
+            toggleError(true);
+            console.error(e);
+            reset();
         }
+        toggleLoading(false);
+    }
 
     return (
         <>
@@ -77,7 +77,7 @@ function Database() {
                                 {/*Some books don't have pictures and therefore don't load: fixed it with condition*/}
                                 <img
                                     src={result.volumeInfo.imageLinks !== undefined ? result.volumeInfo.imageLinks.thumbnail : bookCover}
-                                    alt="bookcover"/>
+                                    alt={result.volumeInfo.title}/>
                                 <a href={result.volumeInfo.previewLink}>
                                     <h3>Title: {result.volumeInfo.title}</h3>
                                 </a>

@@ -18,6 +18,7 @@ function Bestsellers() {
             toggleLoading(true);
             try {
                 toggleError(false);
+                //Unfortunately the Google Books API couldnt fetch the bestselling books of the moment so I changed for this page to another API from the New York Times.
                 const results = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${process.env.REACT_APP_API_KEY_2}`);
                 console.log(results.data.results);
                 setBestsellers(results.data.results.books);
@@ -72,7 +73,7 @@ function Bestsellers() {
                             {bestsellers.slice(0, 3).map((bestseller) => {
                                 return (
                                     <article className="bestseller-article" key={bestseller.primary_isbn10}>
-                                        <img src={bestseller.book_image} alt="bestselling book"/>
+                                        <img src={bestseller.book_image} alt={bestseller.title}/>
                                         <a href={bestseller.amazon_product_url}>
                                             <h3>Title: {bestseller.title}</h3>
                                         </a>
