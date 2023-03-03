@@ -90,6 +90,9 @@ function AuthContextProvider({children}) {
 
     function logOut() {
         console.log("User is logged out");
+        // Remove the favourites out of the Local Storage
+        localStorage.removeItem("favourite books");
+
         // Remove the token out of the Local Storage and set the state
         localStorage.removeItem("token");
         setAuth({

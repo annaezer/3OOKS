@@ -79,7 +79,6 @@ function Questions() {
     return (
         <>
             <h1>Questions</h1>
-            <p>Answer the three questions below to get max three results back</p>
             {loading && <p>Loading...</p>}
             {error && <p>Something went wrong while fetching data</p>}
 
@@ -87,33 +86,56 @@ function Questions() {
 
                 <label htmlFor="feelings">
                     How do you feel?
-                    <select id="feelings" required {...register("mood")}>
-                        {/*Getting the themes from the BISG (books industry study group) database, scaling it to 3 very different ones: "humor", "self-help" and "true crime" and connect them as value to the options from the select menu so I can use them as variable in my get request.*/}
-                        <option value="" disabled selected hidden>Pick your answer</option>
-                        <option value="true+crime">I can face reality</option>
+                    <select id="feelings" {...register("mood", {
+                        required: {
+                            value: true,
+                            message: "If you don't pick an answer, we can't select your books!"
+                        }
+                    })} defaultValue="">
+                        {/*Getting the themes from the BISG (books industry study group) database, scaling it to 8 very different ones and connect them as value to the options from the select menu so I can use them as variable in my get request.*/}
+                        <option value="" disabled hidden>Pick your answer</option>
+                        <option value="horror">I'm in a dark mood</option>
                         <option value="humor">Sad, please cheer me up</option>
                         <option value="self-help">Pff, I need to work on myself</option>
+                        <option value="travel">Some adventure, anyone?</option>
+                        <option value="fantasy">I need to escape reality</option>
+                        <option value="romance">Give me hope after my broken heart</option>
+                        <option value="historical+fiction">Everything was better in the old days</option>
+                        <option value="autobiography">I want to be inspired by the great</option>
                     </select>
                 </label>
+                {errors.mood && <p>{errors.mood.message}</p>}
 
                 <label htmlFor="amount-of-time">
                     How much time do you have?
-                    <select id="amount-of-time" required {...register("time")}>
-                        <option value="" disabled selected hidden>Pick your answer</option>
+                    <select id="amount-of-time" {...register("time", {
+                        required: {
+                            value: true,
+                            message: "If you don't pick an answer, we can't select your books!"
+                        }
+                    })} defaultValue="">
+                        <option value="" disabled hidden>Pick your answer</option>
                         <option value="0">Time is money</option>
                         <option value="1">I've got forever</option>
                     </select>
                 </label>
+                {errors.time && <p>{errors.time.message}</p>}
 
                 <label htmlFor="reviews">
                     How important are good reviews?
-                    <select id="reviews" required {...register("review")}>
-                        <option value="" disabled selected hidden>Pick your answer</option>
+                    <select id="reviews" {...register("review", {
+                        required: {
+                            value: true,
+                            message: "If you don't pick an answer, we can't select your books!"
+                        }
+                    })} defaultValue="">
+                        <option value="" disabled hidden>Pick your answer</option>
                         <option value="0">I don't care</option>
                         <option value="1">I love the underappreciated ones</option>
                         <option value="2">Only the best - obviously!</option>
                     </select>
                 </label>
+                {errors.review && <p>{errors.review.message}</p>}
 
                 <Button
                     type="submit">
@@ -122,7 +144,7 @@ function Questions() {
             </form>
 
             {/*Mapping over the results to be able to show the right data on the page, but not showing when there are no results*/}
-            {finalBooks !== [] ?
+            {finalBooks.length ?
                 <div className="result-container">
                     {/*Using slice method to get only 3 results*/}
                     {finalBooks.slice(0, 3).map((book) => {
@@ -144,7 +166,7 @@ function Questions() {
                     })}
                 </div>
                 :
-                <p>Sorry there are no matches, try again!</p>
+                <p>Answer the three questions to get max three results back</p>
             }
 
             <p>Not happy with the results? <Link to='/'>Search again</Link> in a different way</p>

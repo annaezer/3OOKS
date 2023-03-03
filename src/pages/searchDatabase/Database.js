@@ -6,6 +6,7 @@ import Input from "../../components/input/Input";
 import axios from "axios";
 import {useForm} from "react-hook-form";
 import bookCover from "../../assets/book on head.jpg"
+import cutOffText from "../../helpers/cutOffText";
 
 function Database() {
     // I use React Hook Form again because I want to be consistent
@@ -69,7 +70,7 @@ function Database() {
             </form>
 
             {/*Mapping over the results to be able to show the right data on the page, but not showing when there are no results*/}
-            {results !== undefined ?
+            {results.length ?
                 <div className="result-container">
                     {results.map((result) => {
                         return (
@@ -82,13 +83,13 @@ function Database() {
                                     <h3>Title: {result.volumeInfo.title}</h3>
                                 </a>
                                 <p>Author: {result.volumeInfo.authors}</p>
-                                <p>Description: {result.volumeInfo.description}</p>
+                                <p>Description: {cutOffText(result.volumeInfo.description)}</p>
                             </article>
                         )
                     })}
                 </div>
                 :
-                <p>Sorry there are no matches, try again!</p>
+                <></>
             }
 
             <p>Not happy with the results? <Link to="/">Search again</Link> in a different way</p>
