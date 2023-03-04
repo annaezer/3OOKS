@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import "./Database.css";
 import {Link} from "react-router-dom";
 import Button from "../../components/button/Button";
@@ -7,8 +7,15 @@ import axios from "axios";
 import {useForm} from "react-hook-form";
 import bookCover from "../../assets/book on head.jpg"
 import cutOffText from "../../helpers/cutOffText";
+import {FavContext} from "../../context/FavContext";
+import {AuthContext} from "../../context/AuthContext";
+import {Toaster} from "react-hot-toast";
 
 function Database() {
+    // Access the state from the context so I can save favourites and know if there is a logged in user for conditionally showing the option to store favourites
+    const {addFav} = useContext(FavContext);
+    const {auth} = useContext(AuthContext);
+
     // I use React Hook Form again because I want to be consistent
     const {register, handleSubmit, reset, formState: {errors}} = useForm();
 
@@ -39,6 +46,9 @@ function Database() {
 
     return (
         <>
+            {/*I installed react hot toast to show notifications when favourites are added for better ux*/}
+            <Toaster/>
+
             <h1>Database</h1>
             {error && <span>Something went wrong while fetching data</span>}
             {/*I use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
@@ -84,12 +94,16 @@ function Database() {
                                 </a>
                                 <p>Author: {result.volumeInfo.authors}</p>
                                 <p>Description: {cutOffText(result.volumeInfo.description)}</p>
+                                {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
+                                {auth ? <span className="material-symbols-outlined" onClick={() => addFav(result)}>favorite</span>
+                                    : <span></span>
+                                }
                             </article>
                         )
                     })}
                 </div>
                 :
-                <></>
+                <p>No results, try something else</p>
             }
 
             <p>Not happy with the results? <Link to="/">Search again</Link> in a different way</p>

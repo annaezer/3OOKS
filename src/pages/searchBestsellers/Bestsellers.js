@@ -5,6 +5,7 @@ import axios from "axios";
 import {FavContext} from "../../context/FavContext";
 import cutOffText from "../../helpers/cutOffText";
 import {AuthContext} from "../../context/AuthContext";
+import {Toaster} from "react-hot-toast";
 
 // Making variables from my URL and using my key as variable from env to keep it safe
 const BESTSELLERS_API_URL_FICTION = `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${process.env.REACT_APP_API_KEY_2}`;
@@ -67,6 +68,9 @@ function Bestsellers() {
 
     return (
         <>
+            {/*I installed react hot toast to show notifications when favourites are added for better ux, I preferred to color the heart but could not manage to just colour one instead of all*/}
+            <Toaster/>
+
             <header>
                 {/*<img src={} alt="Books"/>*/}
                 <h1>Bestsellers</h1>
@@ -92,8 +96,7 @@ function Bestsellers() {
                                             {/*Using my helper function to make sure long descriptions get cut off*/}
                                             <p>Description: {cutOffText(bestseller.description)}</p>
                                             {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
-                                            {auth ? <span className="material-symbols-outlined"
-                                                          onClick={() => addFav(bestseller)}>favorite</span>
+                                            {auth ? <span className="material-symbols-outlined" onClick={() => addFav(bestseller)}>favorite</span>
                                                 : <span></span>
                                             }
                                         </article>
@@ -107,7 +110,8 @@ function Bestsellers() {
                         {/*If there is an error show this message:*/}
                         {error && <span>Something went wrong while fetching data</span>}
 
-                        <p>Not happy with the results? <Link to="/">Search again</Link> in a different way or check out the other top 3 by clicking the button below!</p>
+                        <p>Not happy with the results? <Link to="/">Search again</Link> in a different way or check out
+                            the other top 3 by clicking the button below!</p>
 
                         {/*If isFiction is true; so initial state, I want to be able to click and change it to non fiction, plus the other way around*/}
                         <button onClick={toggleFiction}>

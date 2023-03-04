@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./Questions.css";
 import {Link} from "react-router-dom";
 import Button from "../../components/button/Button";
@@ -6,8 +6,15 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import bookCover from "../../assets/book on head.jpg";
 import cutOffText from "../../helpers/cutOffText";
+import {FavContext} from "../../context/FavContext";
+import {AuthContext} from "../../context/AuthContext";
+import {Toaster} from "react-hot-toast";
 
 function Questions() {
+    // Access the state from the context so I can save favourites and know if there is a logged in user for conditionally showing the option to store favourites
+    const {addFav} = useContext(FavContext);
+    const {auth} = useContext(AuthContext);
+
     // Creating state so I can save the data I get from my get request and show the error and loading if appearing
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
@@ -78,6 +85,9 @@ function Questions() {
 
     return (
         <>
+            {/*I installed react hot toast to show notifications when favourites are added for better ux*/}
+            <Toaster/>
+
             <h1>Questions</h1>
             {loading && <p>Loading...</p>}
             {error && <p>Something went wrong while fetching data</p>}
@@ -161,6 +171,10 @@ function Questions() {
                                 <p>Description: {cutOffText(book.volumeInfo.description)}</p>
                                 <p>Pages: {book.volumeInfo.pageCount}</p>
                                 <p>Rating: {book.volumeInfo.averageRating}</p>
+                                {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
+                                {auth ? <span className="material-symbols-outlined" onClick={() => addFav(book)}>favorite</span>
+                                    : <span></span>
+                                }
                             </article>
                         )
                     })}
