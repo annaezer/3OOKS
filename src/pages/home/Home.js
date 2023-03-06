@@ -1,47 +1,67 @@
 import React from "react";
 import "./Home.css";
-import SearchButton from "../../components/searchButton/SearchButton";
+import SearchTile from "../../components/searchTile/SearchTile";
+import Button from "../../components/button/Button";
+import {Link, useNavigate} from "react-router-dom";
+import Header from "../../components/header/Header";
+import readinggirl from "../../assets/french girl reading on terrace.jpg"
 
 function Home() {
+
+    // If users click the button I want to send them to the sign up page so I use the useNavigate hook
+    const navigate = useNavigate();
+
     return (
         <>
-            <h1>3OOKS</h1>
-            <h2>Picking books made easy</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus enim quis ut. Asperiores at
-                cupiditate error facilis laudantium magni molestiae mollitia reiciendis sequi voluptatem. Accusantium
-                animi at beatae blanditiis commodi consequatur cupiditate, dolor enim est et exercitationem explicabo
-                facere iure iusto labore laudantium libero necessitatibus, non numquam provident quibusdam repellat sed
-                similique sit tempora totam veniam. Aliquam laborum quidem quos!</p>
-
+            {/*Made a component from the header as I will use it again on different pages more or less in the same style*/}
+            <Header
+                title="Picking books made easy"
+                img={readinggirl}
+            >
+                <h3>Always in doubt which book to read? No time to browse through all the options? Just want to keep it
+                    simple with all the choices you already have to make in life? Despair no more: 3OOKS is made for
+                    you!</h3>
+            </Header>
             <main>
                 <section>
-                    <SearchButton
+                    <h2>Simply click one of the 3 options below and get 3 books to pick from.</h2>
+                    {/*Made a component of the tiles as they are all similar in style and I can easily make changes if I want*/}
+                    <SearchTile
                         link="/questions"
                         title="Questions"
-                        description="Click here to search for blabla"
+                        description="Click here to answer 3 questions about your mood, available time and need for reviews."
                     />
-                    <SearchButton
+                    <SearchTile
                         link="/database"
                         title="Database"
-                        description="Click here to search for blabla"
+                        description="Click here to search for your favourite author, subject or title."
                     />
-                    <SearchButton
+                    <SearchTile
                         link="/bestsellers"
                         title="Bestsellers"
-                        description="Click here to search for blabla"
+                        description="Click here to get the bestselling top 3 books of the moment."
                     />
                 </section>
                 <section>
                     <h2>About</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto dicta ducimus est
-                        expedita iure magni minima nihil officiis perspiciatis, placeat possimus praesentium reiciendis
-                        repellat veniam. Eveniet ex, laborum natus praesentium similique totam. Accusamus aspernatur
-                        blanditiis, dolor dolores esse id odio, pariatur provident qui quibusdam quis quos reiciendis
-                        saepe, sit temporibus velit voluptatibus. Ad amet culpa dolorem eaque ipsum nam praesentium
-                        tempore? Aliquam, aliquid assumenda at aut commodi dolor eius et ex fuga harum id ipsa ipsam
-                        maiores minus mollitia nam nulla obcaecati quam quisquam reiciendis repellendus rerum sequi sunt
-                        tempora tempore ullam vel. Amet culpa, cum explicabo fuga illum officia optio, possimus
-                        praesentium quis reprehenderit sequi voluptate? Corporis cumque digni.</p>
+                    <p>We don’t care about money; we just care about having less stress. Therefore, 3OOKS is a free
+                        application that helps you choose the books you want to read. No more endless scrolling through
+                        websites, databases, or lists - just 3 ways to search and get 3 books to choose from. Easy! This
+                        leaves more time to actually read the book! Of course, we don't help you tackle the big problems
+                        in life here, but making decisions easier can help reduce stress in your day-to-day life,
+                        right?</p>
+                    <p>You can search in a <Link to="/database">Database</Link> by author, title or subject. More fun
+                        is the <Link to="/questions">Questions</Link> option, where you can get books based on your
+                        mood, available time and need for reviews. If you prefer it as easy as possible, click on
+                        the <Link to="/bestsellers">Bestsellers</Link> and choose one from the top 3 to start reading!
+                        You don't have to sign up to use the app, but if you do you can save your favourite books, and
+                        we may add some cool features in the future. All for free, so why not start there?</p>
+                    <Button
+                        type="button"
+                        clickHandler={() => navigate("/signup")}
+                    >
+                        Sign up
+                    </Button>
                 </section>
             </main>
         </>

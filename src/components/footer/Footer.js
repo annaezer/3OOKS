@@ -4,7 +4,7 @@ import "./Footer.css";
 function Footer() {
     return (
         <>
-            <p>Copyright by AN&copy;</p>
+            <p>Book application 3OOKS&copy; 2023</p>
         </>
     );
 }

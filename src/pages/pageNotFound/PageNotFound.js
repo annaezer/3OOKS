@@ -1,6 +1,8 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import "./PageNotFound.css";
+import bookonhead from "../../assets/book on head.jpg";
+import Header from "../../components/header/Header";
 
 function PageNotFound() {
 
@@ -13,8 +15,15 @@ function PageNotFound() {
 
     return (
         <>
-            <h1>Page not found | 404</h1>
-            <p>You will be redirected in 3 sec.</p>
+            <Header
+                title="Page not found"
+                img={bookonhead}
+            />
+            <main>
+                <section>
+                    <h2>You will be redirected in 3 seconds</h2>
+                </section>
+            </main>
         </>
     );
 }

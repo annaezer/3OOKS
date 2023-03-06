@@ -1,8 +1,8 @@
 import React from "react";
-import "./SearchButton.css"
+import "./SearchTile.css"
 import {Link} from "react-router-dom";
 
-function SearchButton({title, description, link}) {
+function SearchTile({title, description, link}) {
     return (
         <article className="search-button">
             <Link to={link}>
@@ -13,4 +13,4 @@ function SearchButton({title, description, link}) {
     );
 }
 
-export default SearchButton;
+export default SearchTile;
