@@ -10,40 +10,37 @@ function NavBar() {
     console.log(auth);
 
     return (
-        <>
-            <nav>
-                <ul>
-                    {/*I use NavLink to be able to style them when active*/}
-                    <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                                 to="/">Home</NavLink></li>
-                    <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                                 to="/about">About</NavLink></li>
-                    <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                                 to="/contact">Contact</NavLink></li>
-                    {!auth ?
-                        <>
-                            <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                                         to="/signup">Sign up</NavLink></li>
-                            <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                                         to="/login">Log in</NavLink></li>
-                        </>
-                        :
-                        <>
+        <nav>
+            <ul>
+                {/*I use NavLink to be able to style them when active*/}
+                <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                             to="/">Home</NavLink></li>
+                <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                             to="/about">About</NavLink></li>
+                <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                             to="/contact">Contact</NavLink></li>
+                {!auth ?
+                    <>
+                        <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                                     to="/signup">Sign up</NavLink></li>
+                        <li><NavLink className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
+                                     to="/login">Log in</NavLink></li>
+                    </>
+                    :
+                    <>
                             <span className="material-symbols-outlined"><NavLink
                                 to="/favourites">favorite</NavLink></span>
-                            <Button
-                                type="button"
-                                clickHandler={() => logout()}
-                            >
-                                Log out
-                            </Button>
-                            <p>Welcome {user.username} this is your email: {user.email} and this is your
-                                id:{user.id}</p>
-                        </>
-                    }
-                </ul>
-            </nav>
-        </>
+                        <Button
+                            type="button"
+                            clickHandler={() => logout()}
+                        >
+                            Log out
+                        </Button>
+                        <p>Welcome {user.username}!</p>
+                    </>
+                }
+            </ul>
+        </nav>
     );
 }
 

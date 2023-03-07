@@ -3,9 +3,7 @@ import "./Footer.css";
 
 function Footer() {
     return (
-        <>
-            <p>Book application 3OOKS&copy; 2023</p>
-        </>
+        <span>Book application 3OOKS&copy; 2023</span>
     );
 }
 

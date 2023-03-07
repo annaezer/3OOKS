@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import "./Header.css";
 
 function Header({children, img, title}) {
     return (
         <header>
             <h1>{title}</h1>
-            <img src={img} alt={title}/>
-        {children}
+            <img className="header-image" src={img} alt={title}/>
+            {children}
         </header>
     );
 }

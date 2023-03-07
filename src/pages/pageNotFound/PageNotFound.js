@@ -7,11 +7,11 @@ import Header from "../../components/header/Header";
 function PageNotFound() {
 
 // Making sure the user is redirected automatically to the homepage when typing an unknown url
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     setTimeout(() => {
         navigate("/")
-    }, 3000)
+    }, 3000);
 
     return (
         <>

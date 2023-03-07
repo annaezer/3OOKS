@@ -7,7 +7,6 @@ import axios from "axios";
 export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
-
     // useNavigate to make sure I can navigate users to the right page after logging in or logging out
     const navigate = useNavigate();
 
@@ -28,11 +27,11 @@ function AuthContextProvider({children}) {
                 console.log(decoded);
                 // Also check if the token is still valid with this calculation method
                 if (Math.floor(Date.now() / 1000) < decoded.exp) {
-                    console.log("User is still logged in")
+                    console.log("User is still logged in");
                     void getUserData(token);
                 } else {
-                    console.log("Token is expired")
-                    localStorage.removeItem("token")
+                    console.log("Token is expired");
+                    localStorage.removeItem("token");
                 }
                 // If there is no token we don't change anything except for status otherwise it will be "Loading" instead of rendering app without authenticated user
             } else {
@@ -40,19 +39,19 @@ function AuthContextProvider({children}) {
                     auth: false,
                     user: null,
                     status: "done"
-                })
+                });
             }
         }
-        , [])
+        , []);
 
     // I receive the token from my POST request on the Log in page
     function logIn(token) {
         console.log("User is logged in");
         // I put the token in Local Storage
         localStorage.setItem("token", token);
-        // When logged in I want to call the function getUserData to set authentication and user data and make sure the user gets redirected to Favourites page so I pass on token and redirect
-        void getUserData(token, "/favourites");
-    }
+        // When logged in I want to call the function getUserData to set authentication and user data and make sure the user gets redirected to Home so I pass on token and redirect
+        void getUserData(token, "/");
+    };
 
     async function getUserData(token, redirect) {
         try {
@@ -62,7 +61,7 @@ function AuthContextProvider({children}) {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
                 }
-            })
+            });
             // Put the data in the state
             setAuth({
                 auth: true,
@@ -72,26 +71,28 @@ function AuthContextProvider({children}) {
                     id: response.data.id
                 },
                 status: "done"
-            })
-            // If there is a redirect passed on - so only during log in - then redirect to Favourites page
+            });
+            // If there is a redirect passed on - so only during log in - then redirect to Home page
             if (redirect) {
                 navigate(redirect);
             }
-        // If something goes wrong we want to log the error message and keep the state as is except for status so app gets rendered without authenticated user
+            // If something goes wrong we want to log the error message and keep the state as is except for status so app gets rendered without authenticated user
         } catch (e) {
             console.error(e);
             setAuth({
                 auth: false,
                 user: null,
                 status: "done"
-            })
+            });
         }
-    }
+    };
 
     function logOut() {
         console.log("User is logged out");
         // Remove the token and favourites out of the Local Storage
         localStorage.clear();
+        // Refresh the page as fav state stores somehow the favourites despite empty Storage
+        window.location.reload();
         setAuth({
             auth: false,
             user: null,
@@ -99,14 +100,14 @@ function AuthContextProvider({children}) {
         });
         // Navigate the user to the homepage
         navigate("/");
-    }
+    };
 
     // This is the data object we want to pass on in the context so we can access it throughout the app
     const data = {
         ...auth,
         login: logIn,
         logout: logOut,
-    }
+    };
 
     return (
         <AuthContext.Provider value={data}>

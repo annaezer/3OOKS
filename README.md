@@ -1,5 +1,5 @@
 # Waar gaat mijn project over
-Screenshot
+Screenshot belangrijkste pagina
 Beschrijven hoe andere developers mijn project kunnen runnen
 voeg je in de README.md een begeleidende tekst toe waarin je de gebruiker instrueert een eigen .env bestand aan te maken en deze te vullen met de variabel-namen zoals beschreven in env.dist. Uiteraard benoem je ook het maken van een build, en waar de gebruiker aan deze variabelen kan komen.
 

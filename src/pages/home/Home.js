@@ -4,10 +4,9 @@ import SearchTile from "../../components/searchTile/SearchTile";
 import Button from "../../components/button/Button";
 import {Link, useNavigate} from "react-router-dom";
 import Header from "../../components/header/Header";
-import readinggirl from "../../assets/french girl reading on terrace.jpg"
+import readinggirl from "../../assets/french girl reading on terrace.jpg";
 
 function Home() {
-
     // If users click the button I want to send them to the sign up page so I use the useNavigate hook
     const navigate = useNavigate();
 
@@ -24,7 +23,7 @@ function Home() {
             </Header>
             <main>
                 <section>
-                    <h2>Simply click one of the 3 options below and get 3 books to pick from.</h2>
+                    <h2>Simply click one of the 3 options below and get 3 books to pick from</h2>
                     {/*Made a component of the tiles as they are all similar in style and I can easily make changes if I want*/}
                     <SearchTile
                         link="/questions"

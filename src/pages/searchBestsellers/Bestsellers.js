@@ -6,6 +6,8 @@ import {FavContext} from "../../context/FavContext";
 import cutOffText from "../../helpers/cutOffText";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
+import couple from "../../assets/couple reading.jpeg";
+import Header from "../../components/header/Header";
 
 // Making variables from my URL and using my key as variable from env to keep it safe
 const BESTSELLERS_API_URL_FICTION = `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${process.env.REACT_APP_API_KEY_2}`;
@@ -70,20 +72,24 @@ function Bestsellers() {
         <>
             {/*I installed react hot toast to show notifications when favourites are added for better ux, I preferred to color the heart but could not manage to just colour one instead of all*/}
             <Toaster/>
-
-            <header>
-                {/*<img src={} alt="Books"/>*/}
-                <h1>Bestsellers</h1>
-            </header>
+            {/*Re-using my Header component*/}
+            <Header
+                title="Bestsellers"
+                img={couple}
+            />
             <main>
+                <section>
+                    <h2>Pick your book</h2>
+                    <h4>The 3 New York Times bestselling books of the moment</h4>
+                </section>
                 <section className="outer-content-container">
+                    {/*If loading show this message*/}
+                    {loading && <p>Loading your books...</p>}
+                    {/*If there is an error show this message:*/}
+                    {error && <p>Something went wrong while fetching data</p>}
                     <div className="inner-content-container">
-                        <h2>Results</h2>
-                        <h4>The three New York Times bestselling books of the moment</h4>
-                        {/*If loading show this message*/}
-                        {loading && <span>Loading your results...</span>}
                         {/*If the data is fetched, so the bestsellers array has length, show the results:*/}
-                        {bestsellers.length > 0 ?
+                        {bestsellers.length > 0 &&
                             <div className="result-container">
                                 {bestsellers.map((bestseller) => {
                                     return (
@@ -93,31 +99,25 @@ function Bestsellers() {
                                                 <h3>Title: {bestseller.title}</h3>
                                             </a>
                                             <p>Author: {bestseller.author}</p>
-                                            {/*Using my helper function to make sure long descriptions get cut off*/}
-                                            <p>Description: {cutOffText(bestseller.description)}</p>
+                                            {/*Using my helper function to make sure long descriptions get cut off, but some books don't have a description and then my function gives an error: fixed it with condition*/}
+                                            <p>Description: {bestseller.description ? cutOffText(bestseller.description) : "No description."}</p>
                                             {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
-                                            {auth ? <span className="material-symbols-outlined" onClick={() => addFav(bestseller)}>favorite</span>
+                                            {auth ? <span className="material-symbols-outlined"
+                                                          onClick={() => addFav(bestseller)}>favorite</span>
                                                 : <span></span>
                                             }
                                         </article>
                                     )
                                 })}
+                                <p>Not happy with the results? <Link to="/">Search again</Link> in a different way or
+                                    check out the other top 3 by clicking the button below!</p>
                             </div>
-                            :
-                            <p>No bestsellers to show</p>
                         }
-
-                        {/*If there is an error show this message:*/}
-                        {error && <span>Something went wrong while fetching data</span>}
-
-                        <p>Not happy with the results? <Link to="/">Search again</Link> in a different way or check out
-                            the other top 3 by clicking the button below!</p>
 
                         {/*If isFiction is true; so initial state, I want to be able to click and change it to non fiction, plus the other way around*/}
                         <button onClick={toggleFiction}>
                             {isFiction ? "Non-Fiction" : "Fiction"} Bestsellers
                         </button>
-
                     </div>
                 </section>
             </main>

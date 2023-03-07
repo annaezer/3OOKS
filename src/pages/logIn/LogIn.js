@@ -7,27 +7,29 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
-import bookglasses from "../../assets/book with dried flower and glasses.jpeg";
+import bookbed from "../../assets/book bed.jpg";
 import Quote from "../../components/quote/Quote";
+
+// Making variable from my url
+const LOGIN_API_URL = "https://frontend-educational-backend.herokuapp.com/api/auth/signin";
 
 function LogIn() {
 // I use React Hook Form again because I use it in Sign up and want to be consistent
     const {register, handleSubmit, reset, formState: {errors}} = useForm({mode: "onBlur"});
 
     // I use useState to make sure I can put the error messages in the UI
-    const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [loading, toggleLoading] = useState(false);
 
     // I use the context to access the login function
     const {login} = useContext(AuthContext);
 
-    // Create an asynchronic function for my POST request to the backend, which receives the data object from the React Hook Form to access the values from the inputfields
+    // Create an asynchronic function for my POST request to the backend, which receives the data object from the React Hook Form to access the values from the input fields
     async function handleFormSubmit(data) {
-        toggleLoading(true);
         toggleError(false);
+        toggleLoading(true);
         try {
-            const response = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signin", {
+            const response = await axios.post(LOGIN_API_URL, {
                 username: data.name,
                 password: data.password
             })
@@ -38,23 +40,25 @@ function LogIn() {
         } catch (e) {
             toggleError(true);
             console.error(e.response);
-            setErrorMessage("This combination is not valid, please try again");
             // Use reset functionality from Hook Form so I can empty the fields for the user to try again
             reset();
         }
         toggleLoading(false);
-    }
+    };
 
     return (
         <>
+            {/*Re-using my Header component*/}
             <Header
                 title="Log in"
-                img={bookglasses}
+                img={bookbed}
             />
             <main>
                 <section>
                     <h2>Fill in your username and password to log in.</h2>
                     <p>No account yet? Sign up <Link to="/signup">here!</Link></p>
+
+                    {loading && <p>Loading...</p>}
 
                     {/*I use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
                     <form onSubmit={handleSubmit(handleFormSubmit)}>
@@ -104,16 +108,17 @@ function LogIn() {
                             errors={errors}
                         />
                         {/*Showing the error message in UI*/}
-                        {error && <p>{errorMessage}</p>}
+                        {error && <p>This combination is not valid, please try again</p>}
+
                         <Button
                             type="submit"
-                            disabled={loading}
                         >
                             Log in
                         </Button>
                     </form>
                 </section>
                 <section>
+                    {/*Re-using my Quote component*/}
                     <Quote
                         text="“If you don’t like to read, you haven’t found the right book.”"
                         author="- J.K. Rowling"

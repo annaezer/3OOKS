@@ -7,7 +7,7 @@ function SearchTile({title, description, link}) {
         <article className="search-button">
             <Link to={link}>
                 <p>{title}</p>
-            <p>{description}</p>
+                <p>{description}</p>
             </Link>
         </article>
     );

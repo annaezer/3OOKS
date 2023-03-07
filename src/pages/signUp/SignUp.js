@@ -6,8 +6,11 @@ import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
-import bookwindow from "../../assets/vintage books in windows.jpg"
+import booktree from "../../assets/book tree.jpg";
 import Quote from "../../components/quote/Quote";
+
+// Making variable from my url
+const SIGNUP_API_URL = "https://frontend-educational-backend.herokuapp.com/api/auth/signup";
 
 function SignUp() {
 
@@ -27,14 +30,13 @@ function SignUp() {
     async function handleFormSubmit(data) {
         toggleLoading(true);
         toggleError(false);
-
         try {
-            const response = await axios.post("https://frontend-educational-backend.herokuapp.com/api/auth/signup", {
+            const response = await axios.post(SIGNUP_API_URL, {
                 username: data.name,
                 email: data.email,
                 password: data.password,
                 role: ["user"]
-            })
+            });
             console.log(response);
             setSuccesMessage(response.data.message);
             // Use reset functionality from Hook Form so I can empty the fields for the user to see something is happening
@@ -42,8 +44,7 @@ function SignUp() {
             // The time out on 2 seconds so user can read success message and then gets redirected automatically
             setTimeout(() => {
                 navigate("/login")
-            }, 2000)
-
+            }, 2000);
         } catch (e) {
             toggleError(true);
             console.error(e);
@@ -51,18 +52,21 @@ function SignUp() {
             reset();
         }
         toggleLoading(false);
-    }
+    };
 
     return (
         <>
+            {/*Re-using my Header component*/}
             <Header
                 title="Sign up"
-                img={bookwindow}
+                img={booktree}
             />
             <main>
                 <section>
                     <h2>Fill in the details below to create your account and start saving favourites!</h2>
                     <p>Already an account? Log in <Link to="/login">here!</Link></p>
+
+                    {loading && <p>Loading...</p>}
 
                     {/*Use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
                     <form onSubmit={handleSubmit(handleFormSubmit)}>
@@ -99,6 +103,7 @@ function SignUp() {
                                     value: true,
                                     message: "This field is required"
                                 },
+                                // Using RegEx pattern for checking the special symbol @
                                 pattern: {
                                     value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                                     message: "Email must contain '@'"
@@ -135,7 +140,6 @@ function SignUp() {
 
                         <Button
                             type="submit"
-                            disabled={loading}
                         >
                             Sign up
                         </Button>
