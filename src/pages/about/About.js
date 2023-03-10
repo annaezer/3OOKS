@@ -2,7 +2,7 @@ import React from "react";
 import "./About.css";
 import {Link, useNavigate} from "react-router-dom";
 import Header from "../../components/header/Header";
-import bookgirl from "../../assets/girl book front.jpg";
+import booktree from "../../assets/book tree.jpg";
 import Quote from "../../components/quote/Quote";
 import Button from "../../components/button/Button";
 
@@ -15,7 +15,7 @@ function About() {
             {/*Re-using my Header component*/}
             <Header
                 title="About"
-                img={bookgirl}
+                img={booktree}
             />
             <main>
                 <section>

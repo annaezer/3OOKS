@@ -10,7 +10,7 @@ import {FavContext} from "../../context/FavContext";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
 import Header from "../../components/header/Header";
-import couple from "../../assets/couple reading.jpeg";
+import cabin from "../../assets/book cabin.jpg";
 
 function Questions() {
     // Access the state from the context so I can save favourites and know if there is a logged in user for conditionally showing the option to store favourites
@@ -91,7 +91,7 @@ function Questions() {
             {/*Re-using my Header component*/}
             <Header
                 title="Questions"
-                img={couple}
+                img={cabin}
             />
             <main>
                 <section>

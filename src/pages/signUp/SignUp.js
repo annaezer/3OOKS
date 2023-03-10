@@ -6,7 +6,7 @@ import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
-import booktree from "../../assets/book tree.jpg";
+import bookgirl from "../../assets/girl book front.jpg";
 import Quote from "../../components/quote/Quote";
 
 // Making variable from my url
@@ -59,7 +59,7 @@ function SignUp() {
             {/*Re-using my Header component*/}
             <Header
                 title="Sign up"
-                img={booktree}
+                img={bookgirl}
             />
             <main>
                 <section>

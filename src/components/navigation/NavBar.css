@@ -1,7 +1,41 @@
-.active-menu-link {
-    border-bottom: 1px solid deeppink;
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    heigth: 80px;
+    padding: 0 10px;
+    background-color: var(--nav-footer-color);
+    border-radius: 0px 0px 20px 0px;
+    border: 2px solid black;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: row;
+
+    gap: 2em;
+    list-style-type: none;
+    border: 2px solid black;
+}
+
+.logo {
+    font-family: "Poiret One", cursive;
+    text-transform: uppercase;
+    color: var(--accent);
 }
 
 .default-menu-link {
-    border-bottom: none;
+    color: var(--basic);
+    text-decoration: none;
+    text-transform: lowercase;
 }
+
+.active-menu-link {
+    color: var(--heading-button-quote);
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+

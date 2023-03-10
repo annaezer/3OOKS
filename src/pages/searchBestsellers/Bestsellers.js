@@ -6,7 +6,7 @@ import {FavContext} from "../../context/FavContext";
 import cutOffText from "../../helpers/cutOffText";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
-import couple from "../../assets/couple reading.jpeg";
+import outside from "../../assets/girl outside reading.jpg";
 import Header from "../../components/header/Header";
 
 // Making variables from my URL and using my key as variable from env to keep it safe
@@ -75,7 +75,7 @@ function Bestsellers() {
             {/*Re-using my Header component*/}
             <Header
                 title="Bestsellers"
-                img={couple}
+                img={outside}
             />
             <main>
                 <section>

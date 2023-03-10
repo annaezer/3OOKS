@@ -3,7 +3,7 @@ import "./Favourites.css";
 import {FavContext} from "../../context/FavContext";
 import cutOffText from "../../helpers/cutOffText";
 import {Toaster} from "react-hot-toast";
-import bath from "../../assets/book bath.jpg";
+import beach from "../../assets/girl beach reading.jpg";
 import Header from "../../components/header/Header";
 
 function Favourites() {
@@ -19,7 +19,7 @@ function Favourites() {
             {/*Re-using my Header component*/}
             <Header
                 title="My favourites"
-                img={bath}
+                img={beach}
             />
             <main>
                 <section>

@@ -5,12 +5,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Quicksand", "Helvetica Neue", sans-serif;
 }
 
-h1, h2 {
-    font-family: 'Poiret One', cursive;
+h1, h2, h3, h4 {
+    font-family: "Poiret One", cursive;
 }
 
-p {
-    font-family: 'Quicksand', 'Helvetica Neue', sans-serif;
+.outer-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.inner-container {
+
+}
+
+:root {
+    --nav-footer-color: hsl(49, 19%, 62%);
+    --heading-button-quote: hsl(16, 40%, 55%);
+    --accent: hsla(25, 57%, 90%, 0.6);
+    --basic: hsl(15, 67%, 99%);
 }
