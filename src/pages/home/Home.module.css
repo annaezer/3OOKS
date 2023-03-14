@@ -1,4 +1,17 @@
 .header-text {
     color: var(--nav-footer-color);
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+    padding-top: 4rem;
+}
+
+.tiles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*flex-wrap: wrap;*/
+    /*padding-inline: 6rem;*/
+}
+
+.about {
+    background-color: var(--accent);
 }

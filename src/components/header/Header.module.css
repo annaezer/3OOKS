@@ -3,14 +3,60 @@ h1 {
 }
 
 .header-text {
-
+    padding-right: 4rem;
 }
 
-.test {
+.inner-container-header {
+    /*Making a new inner container just for the header cuz of flex-direction*/
+    flex-basis: 87.5rem;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin-inline: 1rem;
+    padding: 2rem 6rem 2rem 5rem;
 
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 0.12rem solid pink;
+}
+
+/*This container is necessary to position the rectangle*/
+.image-container {
+    position: relative;
+    /*margin: 1rem;*/
 }
 
 .header-image {
-    width: 250px;
-    height: 250px;
+    position: relative;
+    width: 25rem;
+    height: 22rem;
+    border-radius: 8rem 0rem;
+    z-index: 1;
+}
+
+.rectangle {
+    position: absolute;
+    width: 25rem;
+    height: 22rem;
+    border: 0.125rem solid var(--heading-button-quote);
+    border-radius: 8rem 0rem;
+    left: 1rem;
+    top: 1rem;
+    z-index: 0;
+}
+
+/*Media query for mobile*/
+@media screen and (max-width: 768px) {
+    .inner-container-header {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        /*align-items: center;*/
+    }
+    .header-text {
+        padding-bottom: 4rem;
+        padding-right: 0;
+    }
 }

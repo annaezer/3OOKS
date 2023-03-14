@@ -1,0 +1,13 @@
+.search-button {
+    /*display: flex;*/
+    flex-basis: 17rem;
+    width: 22rem;
+    height: 15rem;
+    padding: 1rem;
+    gap: 4rem;
+    margin-top: 4rem;
+    background: var(--heading-button-quote);
+    border-radius: 4rem 0rem;
+    /*box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.14);*/
+    text-align: center;
+}

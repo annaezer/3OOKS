@@ -1,10 +1,10 @@
 import React from "react";
-import "./SearchTile.css"
+import styles from "./SearchTile.module.css"
 import {Link} from "react-router-dom";
 
 function SearchTile({title, description, link}) {
     return (
-        <article className="search-button">
+        <article className={styles["search-button"]}>
             <Link to={link}>
                 <p>{title}</p>
                 <p>{description}</p>

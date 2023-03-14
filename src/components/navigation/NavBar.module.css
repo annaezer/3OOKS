@@ -38,6 +38,7 @@
 .welcome-text {
     color: var(--accent);
     font-weight: lighter;
+    padding-left: 4rem;
 }
 
 .default-menu-link {

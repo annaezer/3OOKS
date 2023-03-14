@@ -2,13 +2,13 @@ button {
     background: #BA765D;
     border-radius: 20px 0px;
     border-style: none;
+    min-width: 4.9rem;
+    min-heigth: 2.3rem;
+    cursor: pointer;
 
     font-family: Quicksand;
     font-size: 1.2rem;
     text-transform: lowercase;
     color: var(--basic);
     padding: 0.45rem;
-    cursor: pointer;
 }
-
-
