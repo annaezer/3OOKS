@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import styles from "./Home.module.css";
 import SearchTile from "../../components/searchTile/SearchTile";
 import Button from "../../components/button/Button";
 import {Link, useNavigate} from "react-router-dom";
@@ -17,9 +17,9 @@ function Home() {
                 title="Picking books made easy"
                 img={readinggirl}
             >
-                <h3>Always in doubt which book to read? No time to browse through all the options? Just want to keep it
+                <p className={styles["header-text"]}>Always in doubt which book to read? No time to browse through all the options? Just want to keep it
                     simple with all the choices you already have to make in life? Despair no more: 3OOKS is made for
-                    you!</h3>
+                    you!</p>
             </Header>
             <main>
                 <section>

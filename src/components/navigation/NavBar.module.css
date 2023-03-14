@@ -1,0 +1,50 @@
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    /*I want the navigation bar stretching over the page with a fixed height as well*/
+    width: 100vw;
+    height: 3.75rem;
+    padding-inline: 1rem;
+    background-color: var(--nav-footer-color);
+    border-radius: 0 0 1.25rem 0;
+}
+
+/*When a user hovers over the menu it changes color*/
+.nav-bar a:hover {
+    color: var(--heading-button-quote);
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    gap: 4rem;
+    list-style-type: none;
+}
+
+.logo {
+    display: flex;
+    width: 9.4rem;
+    height: 3rem;
+}
+
+.welcome-text {
+    color: var(--accent);
+    font-weight: lighter;
+}
+
+.default-menu-link {
+    color: var(--basic);
+    text-decoration: none;
+}
+
+.active-menu-link {
+    color: var(--heading-button-quote);
+    text-decoration: none;
+}

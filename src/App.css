@@ -1,29 +1,65 @@
-/*Globale styling: css reset*/
+/*Global styling*/
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap&family=Quicksand:wght@300;400;500;700&display=swap');
 
+/*Css reset with box-sizing to border-box so every element is measured including padding and borders*/
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/*Setting the fonts with back up options and the background-color to more creamy white "bookpage"*/
+body {
     font-family: "Quicksand", "Helvetica Neue", sans-serif;
+    background-color: var(--basic);
 }
 
 h1, h2, h3, h4 {
-    font-family: "Poiret One", cursive;
+    font-family:  "Poiret One", "Monaco", cursive;
 }
 
-.outer-container {
-    display: flex;
-    flex-direction: row;
+h1 {
+    font-size: 4.5rem;
 }
 
-.inner-container {
 
-}
-
+/*Making variables from the colors*/
 :root {
     --nav-footer-color: hsl(49, 19%, 62%);
     --heading-button-quote: hsl(16, 40%, 55%);
-    --accent: hsla(25, 57%, 90%, 0.6);
+    --accent: hsl(25, 57%, 90%);
     --basic: hsl(15, 67%, 99%);
+}
+
+.outer-container {
+    /*Outer container always stretching over the full screen width positioning*/
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+.inner-container {
+/*!*Inside container is max 1400px width so it looks good on wide screens too - changing sizes to rem to make it easy to scale. Standard is 16px so 1400px is 87.5rem. It can shrink is the screen gets smaller but can not grow.*/
+    flex-basis: 87.5rem;
+    flex-shrink: 1;
+    flex-grow: 0;
+    /*Adding margin to left and right so content doesnt get squeezed to edges*/
+    margin-inline: 1rem;
+    /*Making this a flex container too so we can position all the children underneath each other.*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    border: 2px solid black;
+}
+
+/*Making clear that the hearts are clickable and making them change color*/
+.material-symbols-outlined {
+    cursor: pointer;
+}
+
+.material-symbols-outlined:hover {
+    color: var(--heading-button-quote);
 }

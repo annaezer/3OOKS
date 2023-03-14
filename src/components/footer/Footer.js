@@ -1,9 +1,9 @@
 import React from "react";
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 function Footer() {
     return (
-        <span>Book application 3OOKS&copy; 2023</span>
+        <span className={styles.footer}>Book application 3OOKS&copy; 2023</span>
     );
 }
 

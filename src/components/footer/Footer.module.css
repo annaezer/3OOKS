@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /*I want the footer stretching over the page with a fixed height as well*/
+    width: 100vw;
+    height: 1.8rem;
+    padding-inline: 1rem;
+    background-color: var(--nav-footer-color);
+    color: var(--accent);
+    font-size: 0.75rem;
+    border-radius: 1.25rem 0 0 0;
+}

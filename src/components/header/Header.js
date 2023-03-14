@@ -1,12 +1,16 @@
 import React from "react";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 function Header({children, img, title}) {
     return (
-        <header>
-            <h1>{title}</h1>
-            <img className="header-image" src={img} alt={title}/>
-            {children}
+        <header className="outer-container">
+            <div className="inner-container {styles.test}">
+                <img className={styles["header-image"]} src={img} alt={title}/>
+                <div className={styles["header-text"]}>
+                    <h1>{title}</h1>
+                    {children}
+                </div>
+            </div>
         </header>
     );
 }
