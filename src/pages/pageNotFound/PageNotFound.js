@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import "./PageNotFound.css";
-import bookonhead from "../../assets/book on head.jpg";
+import bookonhead from "../../assets/book on head medium.jpeg";
 import Header from "../../components/header/Header";
 
 function PageNotFound() {

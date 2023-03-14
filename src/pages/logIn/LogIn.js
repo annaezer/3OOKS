@@ -7,7 +7,7 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
-import bookbed from "../../assets/book bed.jpg";
+import bookbed from "../../assets/book bed medium.jpeg";
 import Quote from "../../components/quote/Quote";
 
 // Making variable from my url

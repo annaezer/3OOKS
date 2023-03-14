@@ -6,7 +6,7 @@ import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
-import bookgirl from "../../assets/girl book front.jpg";
+import bookgirl from "../../assets/girl book front medium.jpeg";
 import Quote from "../../components/quote/Quote";
 
 // Making variable from my url

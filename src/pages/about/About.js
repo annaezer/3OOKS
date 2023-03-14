@@ -2,7 +2,7 @@ import React from "react";
 import "./About.css";
 import {Link, useNavigate} from "react-router-dom";
 import Header from "../../components/header/Header";
-import booktree from "../../assets/book tree.jpg";
+import booktree from "../../assets/book tree medium.jpeg";
 import Quote from "../../components/quote/Quote";
 import Button from "../../components/button/Button";
 

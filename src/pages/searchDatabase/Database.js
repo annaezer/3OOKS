@@ -5,12 +5,12 @@ import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
 import axios from "axios";
 import {useForm} from "react-hook-form";
-import bookCover from "../../assets/book on head.jpg"
+import bookCover from "../../assets/book on head medium.jpeg"
 import cutOffText from "../../helpers/cutOffText";
 import {FavContext} from "../../context/FavContext";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
-import couple from "../../assets/couple reading.jpeg";
+import couple from "../../assets/couple reading medium.jpeg";
 import Header from "../../components/header/Header";
 
 

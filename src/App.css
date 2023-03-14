@@ -15,7 +15,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family:  "Poiret One", "Monaco", cursive;
+    font-family: "Poiret One", "Monaco", cursive;
 }
 
 h1 {
@@ -41,7 +41,7 @@ h1 {
 }
 
 .inner-container {
-/*!*Inside container is max 1400px width so it looks good on wide screens too - changing sizes to rem to make it easy to scale. Standard is 16px so 1400px is 87.5rem. It can shrink is the screen gets smaller but can not grow.*/
+    /*!*Inside container is max 1400px width so it looks good on wide screens too - changing sizes to rem to make it easy to scale. Standard is 16px so 1400px is 87.5rem. It can shrink is the screen gets smaller but can not grow.*/
     flex-basis: 87.5rem;
     flex-shrink: 1;
     flex-grow: 0;
@@ -55,9 +55,14 @@ h1 {
     border: 2px solid black;
 }
 
-/*Making clear that the hearts are clickable and making them change color*/
+/*Making clear that the hearts are clickable and making them change color. Display block for good positioning.*/
 .material-symbols-outlined {
+    font-variation-settings: "FILL" 100,
+    "wght" 500,
+    "GRAD" 0,
+    "opsz" 48;
     cursor: pointer;
+    display: block;
 }
 
 .material-symbols-outlined:hover {

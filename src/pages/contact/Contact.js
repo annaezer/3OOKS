@@ -3,7 +3,7 @@ import "./Contact.css";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import {useForm} from "react-hook-form";
-import bedbooks from "../../assets/girl on bed with books.jpg";
+import bedbooks from "../../assets/girl on bed with books medium.jpeg";
 import Header from "../../components/header/Header";
 import Quote from "../../components/quote/Quote";
 

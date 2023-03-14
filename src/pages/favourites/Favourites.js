@@ -3,7 +3,7 @@ import "./Favourites.css";
 import {FavContext} from "../../context/FavContext";
 import cutOffText from "../../helpers/cutOffText";
 import {Toaster} from "react-hot-toast";
-import beach from "../../assets/girl beach reading.jpg";
+import beach from "../../assets/girl beach reading medium.jpeg";
 import Header from "../../components/header/Header";
 
 function Favourites() {

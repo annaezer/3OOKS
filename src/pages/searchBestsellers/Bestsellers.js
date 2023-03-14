@@ -6,7 +6,7 @@ import {FavContext} from "../../context/FavContext";
 import cutOffText from "../../helpers/cutOffText";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
-import outside from "../../assets/girl outside reading.jpg";
+import outside from "../../assets/girl outside reading medium.jpeg";
 import Header from "../../components/header/Header";
 
 // Making variables from my URL and using my key as variable from env to keep it safe

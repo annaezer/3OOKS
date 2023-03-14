@@ -4,13 +4,13 @@ import {Link} from "react-router-dom";
 import Button from "../../components/button/Button";
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import bookCover from "../../assets/book on head.jpg";
+import bookCover from "../../assets/book on head medium.jpeg";
 import cutOffText from "../../helpers/cutOffText";
 import {FavContext} from "../../context/FavContext";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
 import Header from "../../components/header/Header";
-import cabin from "../../assets/book cabin.jpg";
+import cabin from "../../assets/book cabin medium.jpeg";
 
 function Questions() {
     // Access the state from the context so I can save favourites and know if there is a logged in user for conditionally showing the option to store favourites
