@@ -23,13 +23,22 @@
     margin: 1rem 6rem 4rem 6rem;
 }
 
-/*Removing the link deco*/
+/*Removing the link deco but making sure when someone hovers yous see its clickable*/
 .about-text-two a {
     text-decoration: none;
-    color: black;
+    color: var(--heading-button-quote);
+    font-weight: bold;
 }
 
-.colour {
+.about-text-two a:hover {
+    color: var(--nav-footer-color);
+}
+
+.background-colour {
+    background-color: var(--accent);
+}
+
+.colour-footer {
     background-color: var(--accent);
 }
 

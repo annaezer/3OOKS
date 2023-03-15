@@ -86,8 +86,3 @@ h3 {
 .material-symbols-outlined:hover {
     color: var(--heading-button-quote);
 }
-
-/*I had to make another className to be able to colour the little piece where the footer rounds off accordingly*/
-.colour-home {
-    background-color: var(--accent);
-}

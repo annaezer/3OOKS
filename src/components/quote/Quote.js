@@ -1,12 +1,12 @@
 import React from "react";
-import "./Quote.css";
+import styles from "./Quote.module.css";
 
 function Quote({text, author}) {
     return (
-        <div>
-            <h3>{text}</h3>
-            <h3>{author}</h3>
-        </div>
+        <>
+            <h2 className={styles["quote-text"]}>{text}</h2>
+            <h2 className={styles["quote-text"]}>{author}</h2>
+        </>
     );
 }
 

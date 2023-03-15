@@ -5,10 +5,9 @@
     margin: 2rem 4rem;
     background: var(--heading-button-quote);
     border-radius: 4rem 0rem;
-    /*box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.14);*/
     text-align: center;
 }
-
+/*When user hovers its clear you can click for good ux*/
 .search-button:hover {
     background-color: var(--nav-footer-color);
 }

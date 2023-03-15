@@ -1,0 +1,5 @@
+.quote-text {
+    color: var(--heading-button-quote);
+    text-align: center;
+    padding: 0.5rem;
+}

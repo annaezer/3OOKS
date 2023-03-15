@@ -11,7 +11,7 @@ function NavBar() {
     console.log(auth);
 
     // Creating state and function for fold out menu when screen size changes
-    const [mobileMenu, toggleMobileMenu] = useState(true);
+    const [mobileMenu, toggleMobileMenu] = useState(false);
 
     function showMobileMenu() {
         toggleMobileMenu(prev => !prev);
