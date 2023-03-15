@@ -22,10 +22,11 @@ function Home() {
                     the options? Just want to keep it simple with all the choices you already have to make in life?
                     Despair no more: 3OOKS is made for you!</p>
             </Header>
+
             <main>
                 <section className="outer-container">
                     <div className="inner-container">
-                        <h2>Simply click one of the 3 options below and get 3 books to pick from</h2>
+                        <h2 className={styles["tiles-head"]}>Simply click one of the 3 options below and get 3 books to pick from</h2>
                         {/*Made a component of the tiles as they are all similar in style and I can easily make changes if I want*/}
                         <div className={styles.tiles}>
                             <SearchTile
@@ -46,11 +47,11 @@ function Home() {
                         </div>
                     </div>
                 </section>
-                <div className={styles.about}>
-                    <section className="outer-container">
+                <section className="outer-container">
+                    <div className={styles.colour}>
                         <div className="inner-container">
-                            <h2>About</h2>
-                            <p>We don’t care about money; we just care about having less stress. Therefore, 3OOKS is a
+                            <h2>About 3OOKS</h2>
+                            <p className={styles["about-text"]}>We don’t care about money; we just care about having less stress. Therefore, 3OOKS is a
                                 free
                                 application that helps you choose the books you want to read. No more endless scrolling
                                 through
@@ -61,7 +62,7 @@ function Home() {
                                 in life here, but making decisions easier can help reduce stress in your day-to-day
                                 life,
                                 right?</p>
-                            <p>You can search in a <Link to="/database">Database</Link> by author, title or subject.
+                            <p className={styles["about-text-two"]}>You can search in a <Link to="/database">Database</Link> by author, title or subject.
                                 More fun
                                 is the <Link to="/questions">Questions</Link> option, where you can get books based on
                                 your
@@ -79,8 +80,8 @@ function Home() {
                                 Sign up
                             </Button>
                         </div>
+                    </div>
                     </section>
-                </div>
             </main>
         </>
     );

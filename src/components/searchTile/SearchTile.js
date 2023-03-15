@@ -6,8 +6,8 @@ function SearchTile({title, description, link}) {
     return (
         <article className={styles["search-button"]}>
             <Link to={link}>
-                <p>{title}</p>
-                <p>{description}</p>
+                <h3 className={styles.title}>{title}</h3>
+                <p className={styles.description}>{description}</p>
             </Link>
         </article>
     );
