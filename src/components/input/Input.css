@@ -1,0 +1,26 @@
+input {
+    padding: 1rem;
+    margin: 1rem;
+    width: 25rem;
+    background: var(--basic);
+    border: 0.08rem solid var(--nav-footer-color);
+    border-radius: 1.25rem 0;
+    font-family: Quicksand;
+    font-weight: lighter;
+    font-size: 1rem;
+}
+/*Changing the ugly default blue border colour*/
+input:focus {
+    outline: none;
+    border-color: var(--heading-button-quote);
+    box-shadow: none;
+}
+
+.error-message {
+    font-family: Quicksand;
+    font-size: 0.75rem;
+    font-weight: bolder;
+    color: var(--heading-button-quote);
+    margin: 0.5rem;
+}
+

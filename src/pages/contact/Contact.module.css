@@ -1,0 +1,50 @@
+.background-colour {
+    background-color: var(--accent);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 12.5rem;
+    width: 31.25rem;
+
+    margin: 2rem 1rem 0 1rem;
+}
+
+.heading {
+    text-align: center;
+}
+
+textarea {
+    padding: 1rem;
+    margin: 1rem;
+    width: 25rem;
+    /*max-width: 25rem;*/
+    /*min-width: 25rem;*/
+    font-family: Quicksand;
+    font-weight: lighter;
+    font-size: 1rem;
+    background: var(--basic);
+    border: 0.08rem solid var(--nav-footer-color);
+    border-radius: 1.25rem 0;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--heading-button-quote);
+}
+
+.error-message, .succes-message {
+    font-family: Quicksand;
+    font-size: 0.75rem;
+    font-weight: bolder;
+    color: var(--heading-button-quote);
+    margin: 0.5rem;
+}
+
+.button {
+    margin: 1rem;
+}
+

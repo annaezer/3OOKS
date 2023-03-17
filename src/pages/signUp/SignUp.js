@@ -6,7 +6,7 @@ import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
-import bookgirl from "../../assets/girl book front medium.jpeg";
+import bookhead from "../../assets/book in front of head.jpg";
 import Quote from "../../components/quote/Quote";
 
 // Making variable from my url
@@ -59,7 +59,7 @@ function SignUp() {
             {/*Re-using my Header component*/}
             <Header
                 title="Sign up"
-                img={bookgirl}
+                img={bookhead}
             />
             <main>
                 <section>
@@ -75,7 +75,7 @@ function SignUp() {
                             inputType="text"
                             inputName="name"
                             inputId="name-field"
-                            inputLabel="Username:"
+                            inputPlaceholder="Username:"
                             validationRules={{
                                 required: {
                                     value: true,
@@ -97,7 +97,7 @@ function SignUp() {
                             inputType="email"
                             inputName="email"
                             inputId="email-field"
-                            inputLabel="Email:"
+                            inputPlaceholder="Email:"
                             validationRules={{
                                 required: {
                                     value: true,
@@ -116,7 +116,7 @@ function SignUp() {
                             inputType="password"
                             inputName="password"
                             inputId="password-field"
-                            inputLabel="Password:"
+                            inputPlaceholder="Password:"
                             validationRules={{
                                 required: {
                                     value: true,

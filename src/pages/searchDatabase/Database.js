@@ -78,7 +78,7 @@ function Database() {
                             inputType="text"
                             inputName="search"
                             inputId="search-field"
-                            inputLabel="Search author, subject or title"
+                            inputPlaceholder="Search author, subject or title"
                             validationRules={{
                                 required: {
                                     value: true,

@@ -7,7 +7,7 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
-import bookbed from "../../assets/book bed medium.jpeg";
+import bookbed from "../../assets/cabin horizontal.png";
 import Quote from "../../components/quote/Quote";
 
 // Making variable from my url
@@ -67,7 +67,7 @@ function LogIn() {
                             inputType="text"
                             inputName="name"
                             inputId="name-field"
-                            inputLabel="Username:"
+                            inputPlaceholder="Username:"
                             validationRules={{
                                 required: {
                                     value: true,
@@ -89,7 +89,7 @@ function LogIn() {
                             inputType="password"
                             inputName="password"
                             inputId="password-field"
-                            inputLabel="Password:"
+                            inputPlaceholder="Password:"
                             validationRules={{
                                 required: {
                                     value: true,
