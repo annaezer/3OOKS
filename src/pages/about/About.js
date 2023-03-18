@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import booktree from "../../assets/book tree medium.jpeg";
 import Quote from "../../components/quote/Quote";
 import Button from "../../components/button/Button";
+import Footer from "../../components/footer/Footer";
 
 function About() {
     // If users click the button I want to send them to the contact page so I use the useNavigate hook
@@ -66,6 +67,7 @@ function About() {
                     </section>
                 </div>
             </main>
+            <Footer/>
         </>
     );
 }

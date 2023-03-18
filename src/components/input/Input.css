@@ -2,18 +2,18 @@ input {
     padding: 1rem;
     margin: 1rem;
     width: 25rem;
-    background: var(--basic);
     border: 0.08rem solid var(--nav-footer-color);
     border-radius: 1.25rem 0;
     font-family: Quicksand;
     font-weight: lighter;
     font-size: 1rem;
+    background-color: var(--basic);
 }
+
 /*Changing the ugly default blue border colour*/
-input:focus {
+input:focus, input:hover {
     outline: none;
-    border-color: var(--heading-button-quote);
-    box-shadow: none;
+    border: 0.15rem solid var(--heading-button-quote);
 }
 
 .error-message {

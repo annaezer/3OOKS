@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./SignUp.css";
+import styles from "./SignUp.module.css";
 import {useForm} from "react-hook-form";
 import Input from "../../components/input/Input";
 import axios from "axios";
@@ -8,6 +8,7 @@ import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 import bookhead from "../../assets/book in front of head.jpg";
 import Quote from "../../components/quote/Quote";
+import Footer from "../../components/footer/Footer";
 
 // Making variable from my url
 const SIGNUP_API_URL = "https://frontend-educational-backend.herokuapp.com/api/auth/signup";
@@ -62,97 +63,106 @@ function SignUp() {
                 img={bookhead}
             />
             <main>
-                <section>
-                    <h2>Fill in the details below to create your account and start saving favourites!</h2>
-                    <p>Already an account? Log in <Link to="/login">here!</Link></p>
+                <div className={styles["background-colour"]}>
+                    <div className="outer-container">
+                        <section className="inner-container">
+                            <h2 className={styles.heading}>Create your account and start
+                                saving favourites!</h2>
+                            <p className={styles.subtext}>Already an account? Log in <Link to="/login">here!</Link></p>
 
-                    {loading && <p>Loading...</p>}
+                            {loading && <p className={styles.loading}>Loading...</p>}
 
-                    {/*Use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
-                    <form onSubmit={handleSubmit(handleFormSubmit)}>
-                        {/*I made a component from the input so I can re-use it*/}
-                        <Input
-                            inputType="text"
-                            inputName="name"
-                            inputId="name-field"
-                            inputPlaceholder="Username:"
-                            validationRules={{
-                                required: {
-                                    value: true,
-                                    message: "This field is required"
-                                },
-                                minLength: {
-                                    value: 6,
-                                    message: "Your name needs to be at least 6 characters"
-                                },
-                                maxLength: {
-                                    value: 15,
-                                    message: "Your name can not be longer than 15 characters"
-                                }
-                            }}
-                            register={register}
-                            errors={errors}
-                        />
-                        <Input
-                            inputType="email"
-                            inputName="email"
-                            inputId="email-field"
-                            inputPlaceholder="Email:"
-                            validationRules={{
-                                required: {
-                                    value: true,
-                                    message: "This field is required"
-                                },
-                                // Using RegEx pattern for checking the special symbol @
-                                pattern: {
-                                    value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                                    message: "Email must contain '@'"
-                                }
-                            }}
-                            register={register}
-                            errors={errors}
-                        />
-                        <Input
-                            inputType="password"
-                            inputName="password"
-                            inputId="password-field"
-                            inputPlaceholder="Password:"
-                            validationRules={{
-                                required: {
-                                    value: true,
-                                    message: "This field is required"
-                                },
-                                minLength: {
-                                    value: 6,
-                                    message: "Your password needs to be at least 6 characters"
-                                },
-                                maxLength: {
-                                    value: 15,
-                                    message: "Your password can not be longer than 15 characters"
-                                }
-                            }}
-                            register={register}
-                            errors={errors}
-                        />
-                        {/*Showing either the error or succes message in UI*/}
-                        {error && <p>{errorMessage}</p>}
-                        {!error && <p>{succesMessage}</p>}
+                            {/*Use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
+                            <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
+                                {/*I made a component from the input so I can re-use it*/}
+                                <Input
+                                    inputType="text"
+                                    inputName="name"
+                                    inputId="name-field"
+                                    inputPlaceholder="Username"
+                                    validationRules={{
+                                        required: {
+                                            value: true,
+                                            message: "This field is required"
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message: "Your name needs to be at least 6 characters"
+                                        },
+                                        maxLength: {
+                                            value: 15,
+                                            message: "Your name can not be longer than 15 characters"
+                                        }
+                                    }}
+                                    register={register}
+                                    errors={errors}
+                                />
+                                <Input
+                                    inputType="email"
+                                    inputName="email"
+                                    inputId="email-field"
+                                    inputPlaceholder="Email"
+                                    validationRules={{
+                                        required: {
+                                            value: true,
+                                            message: "This field is required"
+                                        },
+                                        // Using RegEx pattern for checking the special symbol @
+                                        pattern: {
+                                            value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                                            message: "Email must contain '@'"
+                                        }
+                                    }}
+                                    register={register}
+                                    errors={errors}
+                                />
+                                <Input
+                                    inputType="password"
+                                    inputName="password"
+                                    inputId="password-field"
+                                    inputPlaceholder="Password"
+                                    validationRules={{
+                                        required: {
+                                            value: true,
+                                            message: "This field is required"
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message: "Your password needs to be at least 6 characters"
+                                        },
+                                        maxLength: {
+                                            value: 15,
+                                            message: "Your password can not be longer than 15 characters"
+                                        }
+                                    }}
+                                    register={register}
+                                    errors={errors}
+                                />
+                                {/*Showing either the error or succes message in UI*/}
+                                {error && <p className={styles["error-message"]}>{errorMessage}</p>}
+                                {!error && <p className={styles["succes-message"]}>{succesMessage}</p>}
 
-                        <Button
-                            type="submit"
-                        >
-                            Sign up
-                        </Button>
-                    </form>
-                </section>
-                <section>
-                    {/*Because I repeat the quote section on a few pages I created a component*/}
-                    <Quote
-                        text="“Until I feared I would lose it, I never loved to read. One does not love breathing.”"
-                        author="- Harper Lee"
-                    />
-                </section>
+                                <Button
+                                    className={styles.button}
+                                    type="submit"
+                                >
+                                    Sign up
+                                </Button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div className="outer-container">
+                    <section className="inner-container">
+                        {/*Because I repeat the quote section on a few pages I created a component*/}
+                        <Quote
+                            text="“Until I feared I would lose it, I never loved to read. One does not love breathing.”"
+                            author="- Harper Lee"
+                        />
+                    </section>
+                </div>
             </main>
+            <Footer/>
         </>
     );
 }

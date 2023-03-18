@@ -12,7 +12,6 @@ import Bestsellers from "./pages/searchBestsellers/Bestsellers";
 import Database from "./pages/searchDatabase/Database";
 import Questions from "./pages/searchQuestions/Questions";
 import NavBar from "./components/navigation/NavBar";
-import Footer from "./components/footer/Footer";
 import {AuthContext} from "./context/AuthContext";
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
 
     return (
         <>
-            {/*I want the same navigation bar on all the pages so I put it before Routes, same goes for Footer*/}
+            {/*I want the same navigation bar on all the pages so I put it before Routes*/}
             <NavBar/>
             {/*Implement routing structure*/}
             <Routes>
@@ -37,7 +36,6 @@ function App() {
                 <Route path="/database" element={<Database/>}/>
                 <Route path="/questions" element={<Questions/>}/>
             </Routes>
-            <Footer/>
         </>
     );
 }

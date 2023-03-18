@@ -11,6 +11,8 @@ import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
 import Header from "../../components/header/Header";
 import cabin from "../../assets/book cabin medium.jpeg";
+import styles from "../home/Home.module.css";
+import Footer from "../../components/footer/Footer";
 
 function Questions() {
     // Access the state from the context so I can save favourites and know if there is a logged in user for conditionally showing the option to store favourites
@@ -199,6 +201,7 @@ function Questions() {
                         <p>No results, try changing your mind about something!</p>)}
                 </section>
             </main>
+            <Footer/>
         </>
     );
 }

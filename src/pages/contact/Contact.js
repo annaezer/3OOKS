@@ -6,6 +6,7 @@ import {useForm} from "react-hook-form";
 import bedbooks from "../../assets/girl on bed with books medium.jpeg";
 import Header from "../../components/header/Header";
 import Quote from "../../components/quote/Quote";
+import Footer from "../../components/footer/Footer";
 
 function Contact() {
 // I use React Hook Form for easy validation; validate when user leaves field with onBlur
@@ -32,7 +33,8 @@ function Contact() {
                 <div className={styles["background-colour"]}>
                     <div className="outer-container">
                         <section className="inner-container">
-                            <h2 className={styles.heading}>Please feel free to contact us for questions or suggestions!</h2>
+                            <h2 className={styles.heading}>Please feel free to contact us for questions or
+                                suggestions!</h2>
                             {/*Creating a simple contact form with name and email fields re-using Input components and a textarea for the message*/}
                             <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
                                 <Input
@@ -99,7 +101,8 @@ function Contact() {
                                     >
                 </textarea>
                                 </label>
-                                {errors["message-content"] && <p className={styles["error-message"]}>{errors["message-content"].message}</p>}
+                                {errors["message-content"] &&
+                                    <p className={styles["error-message"]}>{errors["message-content"].message}</p>}
 
                                 <Button
                                     className={styles.button}
@@ -124,6 +127,7 @@ function Contact() {
                     </section>
                 </div>
             </main>
+            <Footer/>
         </>
     );
 }

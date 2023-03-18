@@ -5,6 +5,8 @@ import cutOffText from "../../helpers/cutOffText";
 import {Toaster} from "react-hot-toast";
 import beach from "../../assets/girl beach reading medium.jpeg";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import styles from "../home/Home.module.css";
 
 function Favourites() {
 
@@ -51,6 +53,9 @@ function Favourites() {
                     <span>No books saved as favourite yet</span>
                 }
             </main>
+            <div className={styles["bg-for-footer"]}>
+                <Footer/>
+            </div>
         </>
     );
 }

@@ -12,6 +12,8 @@ import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
 import couple from "../../assets/couple reading medium.jpeg";
 import Header from "../../components/header/Header";
+import styles from "../home/Home.module.css";
+import Footer from "../../components/footer/Footer";
 
 
 function Database() {
@@ -127,6 +129,7 @@ function Database() {
                     {searched && results.length === 0 && (<p>No results, try something else!</p>)}
                 </section>
             </main>
+            <Footer/>
         </>
     );
 }

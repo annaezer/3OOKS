@@ -8,6 +8,8 @@ import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
 import outside from "../../assets/girl outside reading medium.jpeg";
 import Header from "../../components/header/Header";
+import styles from "../home/Home.module.css";
+import Footer from "../../components/footer/Footer";
 
 // Making variables from my URL and using my key as variable from env to keep it safe
 const BESTSELLERS_API_URL_FICTION = `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${process.env.REACT_APP_API_KEY_2}`;
@@ -121,6 +123,7 @@ function Bestsellers() {
                     </div>
                 </section>
             </main>
+            <Footer/>
         </>
     );
 }

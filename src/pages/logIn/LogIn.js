@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import "./LogIn.css";
+import styles from "./LogIn.module.css";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import axios from "axios";
@@ -9,6 +9,7 @@ import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
 import bookbed from "../../assets/cabin horizontal.png";
 import Quote from "../../components/quote/Quote";
+import Footer from "../../components/footer/Footer";
 
 // Making variable from my url
 const LOGIN_API_URL = "https://frontend-educational-backend.herokuapp.com/api/auth/signin";
@@ -54,77 +55,87 @@ function LogIn() {
                 img={bookbed}
             />
             <main>
-                <section>
-                    <h2>Fill in your username and password to log in.</h2>
-                    <p>No account yet? Sign up <Link to="/signup">here!</Link></p>
+                <div className={styles["background-colour"]}>
+                    <div className="outer-container">
+                        <section className="inner-container">
+                            <h2 className={styles.heading}>Fill in your username and password to log in</h2>
+                            <p className={styles.subtext}>No account yet? Sign up <Link to="/signup">here!</Link></p>
 
-                    {loading && <p>Loading...</p>}
+                            {loading && <p className={styles.loading}>Loading...</p>}
 
-                    {/*I use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
-                    <form onSubmit={handleSubmit(handleFormSubmit)}>
-                        {/*Using the Input component again for convenience*/}
-                        <Input
-                            inputType="text"
-                            inputName="name"
-                            inputId="name-field"
-                            inputPlaceholder="Username:"
-                            validationRules={{
-                                required: {
-                                    value: true,
-                                    message: "This field is required"
-                                },
-                                minLength: {
-                                    value: 6,
-                                    message: "Your name needs to be at least 6 characters"
-                                },
-                                maxLength: {
-                                    value: 15,
-                                    message: "Your name can not be longer than 15 characters"
-                                }
-                            }}
-                            register={register}
-                            errors={errors}
+                            {/*I use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
+                            <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
+                                {/*Using the Input component again for convenience*/}
+                                <Input
+                                    inputType="text"
+                                    inputName="name"
+                                    inputId="name-field"
+                                    inputPlaceholder="Username"
+                                    validationRules={{
+                                        required: {
+                                            value: true,
+                                            message: "This field is required"
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message: "Your name needs to be at least 6 characters"
+                                        },
+                                        maxLength: {
+                                            value: 15,
+                                            message: "Your name can not be longer than 15 characters"
+                                        }
+                                    }}
+                                    register={register}
+                                    errors={errors}
+                                />
+                                <Input
+                                    inputType="password"
+                                    inputName="password"
+                                    inputId="password-field"
+                                    inputPlaceholder="Password"
+                                    validationRules={{
+                                        required: {
+                                            value: true,
+                                            message: "This field is required"
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message: "Your password needs to be at least 6 characters"
+                                        },
+                                        maxLength: {
+                                            value: 15,
+                                            message: "Your password can not be longer than 15 characters"
+                                        }
+                                    }}
+                                    register={register}
+                                    errors={errors}
+                                />
+                                {/*Showing the error message in UI*/}
+                                {error &&
+                                    <p className={styles["error-message"]}>This combination is not valid, please try
+                                        again</p>}
+
+                                <Button
+                                    className={styles.button}
+                                    type="submit"
+                                >
+                                    Log in
+                                </Button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div className="outer-container">
+                    <section className="inner-container">
+                        {/*Re-using my Quote component*/}
+                        <Quote
+                            text="“If you don’t like to read, you haven’t found the right book.”"
+                            author="- J.K. Rowling"
                         />
-                        <Input
-                            inputType="password"
-                            inputName="password"
-                            inputId="password-field"
-                            inputPlaceholder="Password:"
-                            validationRules={{
-                                required: {
-                                    value: true,
-                                    message: "This field is required"
-                                },
-                                minLength: {
-                                    value: 6,
-                                    message: "Your password needs to be at least 6 characters"
-                                },
-                                maxLength: {
-                                    value: 15,
-                                    message: "Your password can not be longer than 15 characters"
-                                }
-                            }}
-                            register={register}
-                            errors={errors}
-                        />
-                        {/*Showing the error message in UI*/}
-                        {error && <p>This combination is not valid, please try again</p>}
-
-                        <Button
-                            type="submit"
-                        >
-                            Log in
-                        </Button>
-                    </form>
-                </section>
-                <section>
-                    {/*Re-using my Quote component*/}
-                    <Quote
-                        text="“If you don’t like to read, you haven’t found the right book.”"
-                        author="- J.K. Rowling"
-                    />
-                </section>
+                    </section>
+                </div>
             </main>
+            <Footer/>
         </>
     );
 }

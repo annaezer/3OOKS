@@ -28,9 +28,9 @@ function NavBar() {
                 </button>
                 {/*Using the logo as a svg so you can zoom in or out without problems, plus using Link to make sure the user can always get back to the homepage by clicking on it as this is quite standard*/}
                 <Link to="/"><Logo className={styles.logo}/></Link>
+                {auth && <span className={styles["welcome-text"]}>Welcome {user.username}!</span>}
                 {/*Creating 2 different classNames so I can change the style when mobile*/}
                 <ul className={mobileMenu ? styles["mobile-options"] : styles["menu-options"]}>
-                    {auth && <span className={styles["welcome-text"]}>Welcome {user.username}!</span>}
                     {/*I use NavLink to be able to style them when active*/}
                     <li><NavLink
                         className={({isActive}) => isActive ? styles["active-menu-link"] : styles["default-menu-link"]}

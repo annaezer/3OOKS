@@ -5,6 +5,7 @@ import Button from "../../components/button/Button";
 import {Link, useNavigate} from "react-router-dom";
 import Header from "../../components/header/Header";
 import readinggirl from "../../assets/french girl reading on terrace medium.jpeg";
+import Footer from "../../components/footer/Footer";
 
 function Home() {
     // If users click the button I want to send them to the sign up page so I use the useNavigate hook
@@ -82,6 +83,9 @@ function Home() {
                 </div>
             </section>
         </main>
+        <div className={styles["bg-for-footer"]}>
+        <Footer/>
+        </div>
     </>);
 }
 
