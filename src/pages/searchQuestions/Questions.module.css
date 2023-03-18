@@ -1,0 +1,111 @@
+.background-colour {
+    background-color: var(--accent);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 12.5rem;
+    width: 31.25rem;
+
+    margin: 2rem 1rem 0 1rem;
+}
+
+.select {
+    padding: 1rem;
+    margin: 1rem;
+    width: 25rem;
+    border: 0.08rem solid var(--nav-footer-color);
+    border-radius: 1.25rem 0;
+    font-family: Quicksand;
+    font-weight: lighter;
+    font-size: 1rem;
+    background-color: var(--basic);
+}
+
+.select:focus, input:hover {
+    outline: none;
+    border: 0.15rem solid var(--heading-button-quote);
+}
+
+/*Not working somehow*/
+select option {
+    font-family: "Quicksand";
+    color: var(--basic);
+    background-color: var(--heading-button-quote);
+}
+
+.label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--heading-button-quote);
+    margin: 0.5rem;
+}
+
+.heading {
+    text-align: center;
+}
+
+.text {
+    margin: 2rem;
+    color: var(--nav-footer-color);
+}
+
+.error-message {
+    font-family: Quicksand;
+    font-size: 0.75rem;
+    font-weight: bolder;
+    color: var(--heading-button-quote);
+    margin-bottom: 1rem;
+}
+
+.loading {
+    font-family: Quicksand;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: var(--heading-button-quote);
+    margin: 0.5rem;
+}
+
+.results-message {
+    color: var(--heading-button-quote);
+}
+
+.book {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    margin:1rem;
+}
+
+.book-image {
+    /*margin: 1rem;*/
+    position: relative;
+    width: 15rem;
+    height: 22rem;
+    border-radius: 5rem 0rem;
+    z-index: 1;
+}
+
+.rectangle {
+    position: absolute;
+    width: 15rem;
+    height: 22rem;
+    border: 0.125rem solid var(--heading-button-quote);
+    border-radius: 5rem 0rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 0;
+}
+
+.book-text {
+    margin: 1rem;
+}

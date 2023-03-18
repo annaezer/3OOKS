@@ -53,6 +53,7 @@ function NavBar() {
                                 className={({isActive}) => isActive ? styles["active-menu-link"] : styles["default-menu-link"]}
                                 to="/favourites"><span className="material-symbols-outlined">favorite</span></NavLink>
                             <Button
+                                className={styles["nav-button"]}
                                 type="button"
                                 clickHandler={() => logout()}
                             >

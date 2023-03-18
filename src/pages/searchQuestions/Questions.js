@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import "./Questions.css";
+import styles from "./Questions.module.css";
 import {Link} from "react-router-dom";
 import Button from "../../components/button/Button";
 import {useForm} from "react-hook-form";
@@ -10,8 +10,7 @@ import {FavContext} from "../../context/FavContext";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
 import Header from "../../components/header/Header";
-import cabin from "../../assets/book cabin medium.jpeg";
-import styles from "../home/Home.module.css";
+import sunset from "../../assets/girl sunset.jpg";
 import Footer from "../../components/footer/Footer";
 
 function Questions() {
@@ -93,113 +92,126 @@ function Questions() {
             {/*Re-using my Header component*/}
             <Header
                 title="Questions"
-                img={cabin}
+                img={sunset}
             />
             <main>
-                <section>
-                    <h2>Pick your book</h2>
-                    <h4>Fill in your answers to get max 3 results</h4>
-                </section>
-                <section>
-                    {/*If loading show this message*/}
-                    {loading && <p>Loading your books...</p>}
-                    {/*If there is an error show this message:*/}
-                    {error && <p>Something went wrong while fetching data</p>}
-                    <form onSubmit={handleSubmit(handleFormSubmit)}>
-                        <label htmlFor="feelings">
-                            How do you feel?
-                            <select id="feelings" {...register("mood", {
-                                required: {
-                                    value: true,
-                                    message: "If you don't pick an answer, we can't select your books!"
-                                }
-                            })} defaultValue="">
-                                {/*Getting the themes from the BISG (books industry study group) database, scaling it to 8 very different ones and connect them as value to the options from the select menu so I can use them as variable in my get request.*/}
-                                <option value="" disabled hidden>Pick your answer</option>
-                                <option value="horror">I'm in a dark mood</option>
-                                <option value="humor">Sad, please cheer me up</option>
-                                <option value="self-help">Pff, I need to work on myself</option>
-                                <option value="travel">Some adventure, anyone?</option>
-                                <option value="fantasy">I need to escape reality</option>
-                                <option value="romance">Give me hope after my broken heart</option>
-                                <option value="historical+fiction">Everything was better in the old days</option>
-                                <option value="autobiography">I want to be inspired by the great</option>
-                            </select>
-                        </label>
-                        {errors.mood && <p>{errors.mood.message}</p>}
-
-                        <label htmlFor="amount-of-time">
-                            How much time do you have?
-                            <select id="amount-of-time" {...register("time", {
-                                required: {
-                                    value: true,
-                                    message: "If you don't pick an answer, we can't select your books!"
-                                }
-                            })} defaultValue="">
-                                <option value="" disabled hidden>Pick your answer</option>
-                                <option value="no time">Time is money</option>
-                                <option value="time">I've got forever</option>
-                            </select>
-                        </label>
-                        {errors.time && <p>{errors.time.message}</p>}
-
-                        <label htmlFor="reviews">
-                            How important are good reviews?
-                            <select id="reviews" {...register("review", {
-                                required: {
-                                    value: true,
-                                    message: "If you don't pick an answer, we can't select your books!"
-                                }
-                            })} defaultValue="">
-                                <option value="" disabled hidden>Pick your answer</option>
-                                <option value="not important">I don't care</option>
-                                <option value="bad reviews">I love the underappreciated ones</option>
-                                <option value="best reviews">Only the best - obviously!</option>
-                            </select>
-                        </label>
-                        {errors.review && <p>{errors.review.message}</p>}
-
-                        <Button
-                            type="submit">
-                            Search
-                        </Button>
-                    </form>
-                </section>
-                <section>
-                    {/*Mapping over the results if there are any to be able to show the right data on the page*/}
-                    {finalBooks.length > 0 &&
-                        <div className="result-container">
-                            {/*Using slice method to get only 3 results*/}
-                            {finalBooks.slice(0, 3).map((book) => {
-                                return (
-                                    <article className="database-article" key={book.id}>
-                                        {/*Some books don't have pictures and therefore don't load: fixed it with condition*/}
-                                        <img
-                                            src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : bookCover}
-                                            alt={book.volumeInfo.title}/>
-                                        <a href={book.volumeInfo.previewLink}>
-                                            <h3>Title: {book.volumeInfo.title}</h3>
-                                        </a>
-                                        <p>Author: {book.volumeInfo.authors}</p>
-                                        {/*Some books don't have a description and then my function gives an error: fixed it with condition*/}
-                                        <p>Description: {book.volumeInfo.description ? cutOffText(book.volumeInfo.description) : "No description."}</p>
-                                        <p>Pages: {book.volumeInfo.pageCount}</p>
-                                        <p>Rating: {book.volumeInfo.averageRating}</p>
-                                        {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
-                                        {auth ? <span className="material-symbols-outlined"
-                                                      onClick={() => addFav(book)}>favorite</span>
-                                            : <span></span>
+                <div className={styles["background-colour"]}>
+                    <div className="outer-container">
+                        <section className="inner-container">
+                            <h2 className={styles.heading}>Answer the questions below</h2>
+                            <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
+                                <label className={styles.label} htmlFor="feelings">
+                                    How do you feel?
+                                    <select className={styles.select} id="feelings" {...register("mood", {
+                                        required: {
+                                            value: true,
+                                            message: "If you don't pick an answer, we can't select your books!"
                                         }
-                                    </article>
-                                )
-                            })}
-                            <p>Not happy with the results? <Link to="/">Search again</Link> in a different way</p>
-                        </div>
-                    }
-                    {/*If there is a search done but no results show this message:*/}
-                    {searched && finalBooks.length === 0 && (
-                        <p>No results, try changing your mind about something!</p>)}
-                </section>
+                                    })} defaultValue="">
+                                        {/*Getting the themes from the BISG (books industry study group) database, scaling it to 8 very different ones and connect them as value to the options from the select menu so I can use them as variable in my get request.*/}
+                                        <option value="" disabled hidden>Pick your answer</option>
+                                        <option value="horror">I'm in a dark mood</option>
+                                        <option value="humor">Sad, please cheer me up</option>
+                                        <option value="self-help">Pff, I need to work on myself</option>
+                                        <option value="travel">Some adventure, anyone?</option>
+                                        <option value="fantasy">I need to escape reality</option>
+                                        <option value="romance">Give me hope after my broken heart</option>
+                                        <option value="historical+fiction">Everything was better in the old days
+                                        </option>
+                                        <option value="autobiography">I want to be inspired by the great</option>
+                                    </select>
+                                </label>
+                                {errors.mood && <p className={styles["error-message"]}>{errors.mood.message}</p>}
+
+                                <label className={styles.label} htmlFor="amount-of-time">
+                                    How much time do you have?
+                                    <select className={styles.select} id="amount-of-time" {...register("time", {
+                                        required: {
+                                            value: true,
+                                            message: "If you don't pick an answer, we can't select your books!"
+                                        }
+                                    })} defaultValue="">
+                                        <option value="" disabled hidden>Pick your answer</option>
+                                        <option value="no time">Time is money</option>
+                                        <option value="time">I've got forever</option>
+                                    </select>
+                                </label>
+                                {errors.time && <p className={styles["error-message"]}>{errors.time.message}</p>}
+
+                                <label className={styles.label} htmlFor="reviews">
+                                    How important are good reviews?
+                                    <select className={styles.select} id="reviews" {...register("review", {
+                                        required: {
+                                            value: true,
+                                            message: "If you don't pick an answer, we can't select your books!"
+                                        }
+                                    })} defaultValue="">
+                                        <option value="" disabled hidden>Pick your answer</option>
+                                        <option value="not important">I don't care</option>
+                                        <option value="bad reviews">I love the underappreciated ones</option>
+                                        <option value="best reviews">Only the best - obviously!</option>
+                                    </select>
+                                </label>
+                                {errors.review && <p className={styles["error-message"]}>{errors.review.message}</p>}
+                                <Button
+                                    className={styles.button}
+                                    type="submit">
+                                    Search
+                                </Button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div className="outer-container">
+                    <section className="inner-container">
+                        <h2 className={styles.heading}>Pick your book</h2>
+                        {/*If loading show this message*/}
+                        {loading && <p className={styles.loading}>Loading your books...</p>}
+                        {/*If there is an error show this message:*/}
+                        {error && <p className={styles.loading}>Something went wrong while fetching data</p>}
+                        {/*Mapping over the results if there are any to be able to show the right data on the page*/}
+                        {finalBooks.length > 0 ?
+                            <div>
+                                {/*Using slice method to get only 3 results*/}
+                                {finalBooks.slice(0, 3).map((book) => {
+                                    return (
+                                        <article className={styles.book} key={book.id}>
+                                            {/*Some books don't have pictures and therefore don't load: fixed it with condition*/}
+                                            <div className={styles["image-container"]}>
+                                                <img className={styles["book-image"]}
+                                                     src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : bookCover}
+                                                     alt={book.volumeInfo.title}/>
+                                                <div className={styles.rectangle}></div>
+                                            </div>
+                                            <div className={styles["book-text"]}>
+                                                <a href={book.volumeInfo.previewLink}>
+                                                    <h3>{book.volumeInfo.title}</h3>
+                                                </a>
+                                                <p>Author: {book.volumeInfo.authors}</p>
+                                                {/*Some books don't have a description and then my function gives an error: fixed it with condition*/}
+                                                <p>Description: {book.volumeInfo.description ? cutOffText(book.volumeInfo.description) : "No description."}</p>
+                                                <p>Pages: {book.volumeInfo.pageCount}</p>
+                                                <p>Rating: {book.volumeInfo.averageRating}</p>
+                                                {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
+                                                {auth ? <span className="material-symbols-outlined"
+                                                              onClick={() => addFav(book)}>favorite</span>
+                                                    : <span></span>
+                                                }
+                                            </div>
+                                        </article>
+                                    )
+                                })}
+                                <p>Not happy with the results? <Link to="/">Search again</Link> in a different way</p>
+                            </div>
+                            :
+                            <p className={styles.text}>But you have to answer the questions first...</p>
+                        }
+                        {/*If there is a search done but no results show this message:*/}
+                        {searched && finalBooks.length === 0 && (
+                            <p className={styles["results-message"]}>No results, try changing your mind about
+                                something!</p>)}
+                    </section>
+                </div>
             </main>
             <Footer/>
         </>

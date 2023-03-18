@@ -78,6 +78,16 @@
         margin-inline: 0;
     }
 
+    .nav-button {
+        background: none;
+        padding: 0;
+    }
+
+    .nav-button:hover {
+        border-style:none;
+        color: var(--heading-button-quote);
+    }
+
     .toggle-menu, .toggle-menu:hover {
         display: block;
         color: var(--basic);
@@ -98,6 +108,6 @@
         gap: 1rem;
 
         background-color: var(--nav-footer-color);
-        padding: 3rem 2rem;
+        padding: 2rem;
     }
 }
