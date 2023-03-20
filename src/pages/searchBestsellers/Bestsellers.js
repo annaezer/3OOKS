@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
-import "./Bestsellers.css";
+import styles from "./Bestsellers.module.css";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import {FavContext} from "../../context/FavContext";
 import cutOffText from "../../helpers/cutOffText";
 import {AuthContext} from "../../context/AuthContext";
 import {Toaster} from "react-hot-toast";
-import outside from "../../assets/girl outside reading medium.jpeg";
+import window from "../../assets/girl window medium.jpeg";
 import Header from "../../components/header/Header";
-import styles from "../home/Home.module.css";
 import Footer from "../../components/footer/Footer";
 
 // Making variables from my URL and using my key as variable from env to keep it safe
@@ -77,51 +76,57 @@ function Bestsellers() {
             {/*Re-using my Header component*/}
             <Header
                 title="Bestsellers"
-                img={outside}
+                img={window}
             />
             <main>
-                <section>
-                    <h2>Pick your book</h2>
-                    <h4>The 3 New York Times bestselling books of the moment</h4>
-                </section>
-                <section className="outer-content-container">
-                    {/*If loading show this message*/}
-                    {loading && <p>Loading your books...</p>}
-                    {/*If there is an error show this message:*/}
-                    {error && <p>Something went wrong while fetching data</p>}
-                    <div className="inner-content-container">
+                <div className="outer-container">
+                    <section className="inner-container">
+                        <h2>Pick your book</h2>
+                        {/*If loading show this message*/}
+                        {loading && <p className={styles.message}>Loading your books...</p>}
+                        {/*If there is an error show this message:*/}
+                        {error && <p className={styles.message}>Something went wrong while fetching data</p>}
                         {/*If the data is fetched, so the bestsellers array has length, show the results:*/}
                         {bestsellers.length > 0 &&
-                            <div className="result-container">
+                            <div>
                                 {bestsellers.map((bestseller) => {
                                     return (
-                                        <article className="bestseller-article" key={bestseller.primary_isbn10}>
-                                            <img src={bestseller.book_image} alt={bestseller.title}/>
-                                            <a href={bestseller.amazon_product_url}>
-                                                <h3>Title: {bestseller.title}</h3>
-                                            </a>
-                                            <p>Author: {bestseller.author}</p>
-                                            {/*Using my helper function to make sure long descriptions get cut off, but some books don't have a description and then my function gives an error: fixed it with condition*/}
-                                            <p>Description: {bestseller.description ? cutOffText(bestseller.description) : "No description."}</p>
-                                            {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
-                                            {auth ? <span className="material-symbols-outlined"
-                                                          onClick={() => addFav(bestseller)}>favorite</span>
-                                                : <span></span>
-                                            }
+                                        <article className={styles.book}
+                                                 key={bestseller.primary_isbn10}>
+                                            <div className={styles["image-container"]}>
+                                                <img className={styles["book-image"]} src={bestseller.book_image}
+                                                     alt={bestseller.title}/>
+                                                <div className={styles.rectangle}></div>
+                                            </div>
+                                            <div className={styles["book-text"]}>
+                                                <a className={styles.link} href={bestseller.amazon_product_url}>
+                                                    <h3 className={styles.title}>{bestseller.title}</h3>
+                                                </a>
+                                                <p><span className={styles.keys}>Author: </span> {bestseller.author}</p>
+                                                {/*Using my helper function to make sure long descriptions get cut off, but some books don't have a description and then my function gives an error: fixed it with condition*/}
+                                                <p><span
+                                                    className={styles.keys}>Description: </span> {bestseller.description ? cutOffText(bestseller.description) : "No description."}
+                                                </p>
+                                                {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
+                                                {auth ? <span className="material-symbols-outlined"
+                                                              onClick={() => addFav(bestseller)}>favorite</span>
+                                                    : <span></span>
+                                                }
+                                            </div>
                                         </article>
                                     )
                                 })}
-                                <p>Not happy with the results? <Link to="/">Search again</Link> in a different way or
-                                    check out the other top 3 by clicking the button below!</p>
+                                <p className={styles["results-message"]}>Not happy with the results? <Link to="/" className={styles.link}>Search
+                                    again</Link> in a different way or check out the other top 3 by clicking the button below!</p>
                             </div>
                         }
 
                         {/*If isFiction is true; so initial state, I want to be able to click and change it to non fiction, plus the other way around*/}
-                        <button onClick={toggleFiction}>
+                        <button className={styles.button} onClick={toggleFiction}>
                             {isFiction ? "Non-Fiction" : "Fiction"} Bestsellers
                         </button>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </main>
             <Footer/>
         </>

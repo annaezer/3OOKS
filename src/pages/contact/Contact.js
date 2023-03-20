@@ -78,7 +78,7 @@ function Contact() {
                                     register={register}
                                     errors={errors}
                                 />
-                                <label htmlFor="message-field">
+                                <label htmlFor="message-field" className={styles["label-text"]}>
                                     <textarea
                                         placeholder="Your message"
                                         id="message-field"

@@ -4,7 +4,7 @@ import "./Input.css";
 function Input({inputType, inputName, inputPlaceholder, inputId, validationRules, register, errors}) {
     return (
         <>
-            <label htmlFor={inputId}>
+            <label htmlFor={inputId} className="label-text">
                 <input
                     placeholder={inputPlaceholder}
                     type={inputType}

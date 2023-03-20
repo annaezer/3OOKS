@@ -14,17 +14,17 @@ function FavContextProvider({children}) {
         console.log(fav)
         if (!fav.some(test => test["primary_isbn10"] === book.primary_isbn10)) {
             setFav([...fav, book]);
-            toast.success("Added to Favourites", {
-                icon: <span className="material-symbols-outlined">favorite</span>
+            toast.success(<span className={"toast-text"}>Added to Favourites</span>, {
+                icon: <span className="material-symbols-outlined heart">favorite</span>
             });
         } else if (!fav.some(test => test["id"] === book.id)) {
             setFav([...fav, book]);
-            toast.success("Added to Favourites", {
-                icon: <span className="material-symbols-outlined">favorite</span>
+            toast.success(<span className={"toast-text"}>Added to Favourites</span>, {
+                icon: <span className="material-symbols-outlined heart">favorite</span>
             });
         } else {
-            toast.success("You already added this to Favourites", {
-                icon: <span className="material-symbols-outlined">favorite</span>
+            toast.success(<span className={"toast-text"}>You already added this to Favourites</span>, {
+                icon: <span className="material-symbols-outlined heart">favorite</span>
             });
         }
     };
@@ -38,8 +38,8 @@ function FavContextProvider({children}) {
     // Creating a function for removing the favourites from the array by returning all the books with the filter option except for the given one
     function removeFav(book) {
         setFav([...fav.filter((favs) => favs !== book)]);
-        toast("Removed from Favourites", {
-            icon: <span className="material-symbols-outlined">delete</span>
+        toast(<span className={"toast-text"}>Removed from Favourites</span>, {
+            icon: <span className="material-symbols-outlined bin">delete</span>
         });
     };
 

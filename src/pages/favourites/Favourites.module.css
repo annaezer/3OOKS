@@ -1,0 +1,65 @@
+.book {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    margin: 2rem;
+}
+
+.image-container {
+    position: relative;
+    margin: 1rem 4rem;
+}
+
+.book-image {
+    position: relative;
+    width: 13rem;
+    height: 19rem;
+    border-radius: 5rem 0rem;
+    z-index: 1;
+}
+
+.rectangle {
+    position: absolute;
+    width: 13rem;
+    height: 19rem;
+    border: 0.125rem solid var(--heading-button-quote);
+    border-radius: 5rem 0rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 0;
+}
+
+.book-text {
+    margin: 1rem 4rem;
+    background-color: var(--accent);
+    border-radius: 5rem 0rem;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25rem;
+    height: 19rem;
+}
+
+.link:hover, .title {
+    font-weight: bold;
+    color: var(--heading-button-quote);
+}
+
+.link, .title:hover {
+    font-weight: bold;
+    color: var(--nav-footer-color);
+}
+
+.keys {
+    font-weight: bold;
+}
+
+.message {
+    font-size: 1rem;
+    color: var(--nav-footer-color);
+    margin: 2rem;
+}

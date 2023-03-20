@@ -31,10 +31,10 @@
 }
 
 /*Not working somehow*/
-select option {
+.select option {
     font-family: "Quicksand";
     color: var(--basic);
-    background-color: var(--heading-button-quote);
+    background-color: var(--accent);
 }
 
 .label {
@@ -43,10 +43,6 @@ select option {
     text-align: center;
     color: var(--heading-button-quote);
     margin: 0.5rem;
-}
-
-.heading {
-    text-align: center;
 }
 
 .text {
@@ -58,47 +54,48 @@ select option {
     font-family: Quicksand;
     font-size: 0.75rem;
     font-weight: bolder;
-    color: var(--heading-button-quote);
+    color: var(--nav-footer-color);
     margin-bottom: 1rem;
 }
 
-.loading {
-    font-family: Quicksand;
+.message {
     font-size: 1rem;
     font-weight: bolder;
     color: var(--heading-button-quote);
-    margin: 0.5rem;
+    margin: 1rem;
 }
 
 .results-message {
     color: var(--heading-button-quote);
+    text-align: center;
 }
 
 .book {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+
+    margin: 2rem;
 }
 
 .image-container {
     position: relative;
-    margin:1rem;
+    margin: 1rem 4rem;
 }
 
 .book-image {
-    /*margin: 1rem;*/
     position: relative;
-    width: 15rem;
-    height: 22rem;
+    width: 13rem;
+    height: 19rem;
     border-radius: 5rem 0rem;
     z-index: 1;
 }
 
 .rectangle {
     position: absolute;
-    width: 15rem;
-    height: 22rem;
+    width: 13rem;
+    height: 19rem;
     border: 0.125rem solid var(--heading-button-quote);
     border-radius: 5rem 0rem;
     right: 1rem;
@@ -107,5 +104,29 @@ select option {
 }
 
 .book-text {
-    margin: 1rem;
+    margin: 1rem 4rem;
+    background-color: var(--accent);
+    border-radius: 5rem 0rem;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 25rem;
+    height: 19rem;
 }
+
+.link, .title {
+    font-weight: bold;
+    color: var(--heading-button-quote);
+}
+
+.link:hover, .title:hover {
+    color: var(--nav-footer-color);
+}
+
+.keys {
+    font-weight: bold;
+}
+
+/*No media query necessary cuz of flex-wrap*/

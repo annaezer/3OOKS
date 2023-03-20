@@ -164,11 +164,11 @@ function Questions() {
                 </div>
                 <div className="outer-container">
                     <section className="inner-container">
-                        <h2 className={styles.heading}>Pick your book</h2>
+                        <h2>Pick your book</h2>
                         {/*If loading show this message*/}
-                        {loading && <p className={styles.loading}>Loading your books...</p>}
+                        {loading && <p className={styles.message}>Loading your books...</p>}
                         {/*If there is an error show this message:*/}
-                        {error && <p className={styles.loading}>Something went wrong while fetching data</p>}
+                        {error && <p className={styles.message}>Something went wrong while fetching data</p>}
                         {/*Mapping over the results if there are any to be able to show the right data on the page*/}
                         {finalBooks.length > 0 ?
                             <div>
@@ -184,14 +184,21 @@ function Questions() {
                                                 <div className={styles.rectangle}></div>
                                             </div>
                                             <div className={styles["book-text"]}>
-                                                <a href={book.volumeInfo.previewLink}>
-                                                    <h3>{book.volumeInfo.title}</h3>
+                                                <a className={styles.link} href={book.volumeInfo.previewLink}>
+                                                    <h3 className={styles.title}>{book.volumeInfo.title}</h3>
                                                 </a>
-                                                <p>Author: {book.volumeInfo.authors}</p>
+                                                <p><span
+                                                    className={styles.keys}>Author: </span> {book.volumeInfo.authors}</p>
                                                 {/*Some books don't have a description and then my function gives an error: fixed it with condition*/}
-                                                <p>Description: {book.volumeInfo.description ? cutOffText(book.volumeInfo.description) : "No description."}</p>
-                                                <p>Pages: {book.volumeInfo.pageCount}</p>
-                                                <p>Rating: {book.volumeInfo.averageRating}</p>
+                                                <p><span
+                                                    className={styles.keys}>Description: </span> {book.volumeInfo.description ? cutOffText(book.volumeInfo.description) : "No description."}
+                                                </p>
+                                                <p><span
+                                                    className={styles.keys}>Pages: </span> {book.volumeInfo.pageCount}
+                                                </p>
+                                                <p><span
+                                                    className={styles.keys}>Rating: </span> {book.volumeInfo.averageRating}
+                                                </p>
                                                 {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
                                                 {auth ? <span className="material-symbols-outlined"
                                                               onClick={() => addFav(book)}>favorite</span>
@@ -201,7 +208,8 @@ function Questions() {
                                         </article>
                                     )
                                 })}
-                                <p>Not happy with the results? <Link to="/">Search again</Link> in a different way</p>
+                                <p className={styles["results-message"]}>Not happy with the results? <Link to="/" className={styles.link}>Search
+                                    again</Link> in a different way</p>
                             </div>
                             :
                             <p className={styles.text}>But you have to answer the questions first...</p>

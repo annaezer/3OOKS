@@ -55,7 +55,7 @@ h3 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 0.12rem solid purple;
+    /*border: 0.12rem solid purple;*/
 }
 
 .inner-container {
@@ -70,7 +70,7 @@ h3 {
     flex-direction: column;
     align-items: center;
     padding: 4rem 0;
-    border: 0.12rem solid pink;
+    /*border: 0.12rem solid pink;*/
 }
 
 /*Making clear that the hearts are clickable and making them change color. Display block for good positioning.*/
@@ -85,4 +85,19 @@ h3 {
 
 .material-symbols-outlined:hover {
     color: var(--heading-button-quote);
+}
+
+.material-symbols-outlined:active {
+    font-variation-settings: "FILL" 100;
+}
+
+/*Styling for my notification text*/
+.toast-text {
+    font-family: Quicksand;
+    color: var(--heading-button-quote);
+}
+
+.heart, .bin {
+    color: var(--heading-button-quote);
+    font-variation-settings: "FILL" 100;
 }
