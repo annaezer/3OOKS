@@ -1,12 +1,13 @@
 import React from "react";
-import "./Button.css";
+import "./Button.module.css";
 
-function Button({type, disabled, children, className, clickHandler}) {
+// I cant use the styles cuz it conflicts with other styles in nav component
+
+function Button({type, children, clickHandler, className}) {
     return (
         <button
-            type={type}
-            disabled={disabled}
             className={className}
+            type={type}
             onClick={clickHandler}
         >
             {children}

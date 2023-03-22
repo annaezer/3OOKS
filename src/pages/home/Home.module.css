@@ -1,13 +1,19 @@
+.heading {
+    color: var(--heading-button-quote);
+}
+
 .header-text {
     color: var(--nav-footer-color);
     font-size: 1.3rem;
     margin-top: 4rem;
+    margin-right: 2rem;
 }
 
 .tiles {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .tiles-head {
@@ -46,6 +52,10 @@
 @media screen and (max-width: 768px) {
     .tiles {
         flex-direction: column;
+    }
+
+    .header-text {
+        margin-right: 0;
     }
 }
 

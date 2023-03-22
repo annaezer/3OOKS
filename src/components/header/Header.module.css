@@ -1,4 +1,4 @@
-h1 {
+.heading {
     color: var(--heading-button-quote);
 }
 
@@ -18,8 +18,6 @@ h1 {
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-
-    /*border: 0.12rem solid pink;*/
 }
 
 /*This container is necessary to position the rectangle*/
@@ -27,6 +25,7 @@ h1 {
     position: relative;
 }
 
+/*I want the image over a part of the border, therefore using higher z-index*/
 .header-image {
     position: relative;
     width: 25rem;
@@ -55,6 +54,7 @@ h1 {
     }
 
     .header-text {
+        text-align: center;
         padding-bottom: 4rem;
         padding-right: 0;
     }

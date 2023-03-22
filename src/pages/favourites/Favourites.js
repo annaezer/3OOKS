@@ -6,6 +6,7 @@ import {Toaster} from "react-hot-toast";
 import beach from "../../assets/reading in sea.jpeg";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import {Link} from "react-router-dom";
 
 function Favourites() {
 
@@ -42,7 +43,7 @@ function Favourites() {
                                             </div>
                                             <div className={styles["book-text"]}>
                                                 <a
-                                                   href={favourite.amazon_product_url || favourite.volumeInfo.previewLink}>
+                                                    href={favourite.amazon_product_url || favourite.volumeInfo.previewLink}>
                                                     <h3 className={styles.title}>{favourite.title || favourite.volumeInfo.title}</h3>
                                                 </a>
                                                 <p><span
@@ -62,12 +63,13 @@ function Favourites() {
                             </div>
 
                             :
-                            <span className={styles.message}>No books saved as favourite yet</span>
+                            <span className={styles.message}>No books saved as favourite yet: start your <Link to="/"
+                                                                                                               className={styles.link}>search!</Link></span>
                         }
                     </section>
                 </div>
             </main>
-                <Footer/>
+            <Footer/>
         </>
     );
 }

@@ -76,10 +76,11 @@ function SignUp() {
                             <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
                                 {/*I made a component from the input so I can re-use it*/}
                                 <Input
+                                    labelText="Username"
                                     inputType="text"
                                     inputName="name"
                                     inputId="name-field"
-                                    inputPlaceholder="Username"
+                                    inputPlaceholder="Choose your own username"
                                     validationRules={{
                                         required: {
                                             value: true,
@@ -98,10 +99,11 @@ function SignUp() {
                                     errors={errors}
                                 />
                                 <Input
+                                    labelText="Email"
                                     inputType="email"
                                     inputName="email"
                                     inputId="email-field"
-                                    inputPlaceholder="Email"
+                                    inputPlaceholder="Fill in your email-address"
                                     validationRules={{
                                         required: {
                                             value: true,
@@ -117,10 +119,11 @@ function SignUp() {
                                     errors={errors}
                                 />
                                 <Input
+                                    labelText="Password"
                                     inputType="password"
                                     inputName="password"
                                     inputId="password-field"
-                                    inputPlaceholder="Password"
+                                    inputPlaceholder="Choose your own password"
                                     validationRules={{
                                         required: {
                                             value: true,
@@ -138,6 +141,7 @@ function SignUp() {
                                     register={register}
                                     errors={errors}
                                 />
+
                                 {/*Showing either the error or succes message in UI*/}
                                 {error && <p className={styles["error-message"]}>{errorMessage}</p>}
                                 {!error && <p className={styles["succes-message"]}>{succesMessage}</p>}

@@ -17,21 +17,22 @@
     text-align: center;
 }
 
-textarea {
+.textarea {
     padding: 1rem;
     margin: 1rem;
     width: 25rem;
-    font-family: Quicksand;
-    font-weight: lighter;
-    font-size: 1rem;
     background: var(--basic);
     border: 0.08rem solid var(--nav-footer-color);
     border-radius: 1.25rem 0;
     /*Removing the option to extend the textarea with arrow*/
     resize: none;
+
+    font-family: Quicksand;
+    font-weight: lighter;
+    font-size: 1rem;
 }
 
-textarea:focus, textarea:hover {
+.textarea:focus, textarea:hover {
     outline: none;
     border: 0.15rem solid var(--heading-button-quote);
 }
@@ -48,12 +49,12 @@ textarea:focus, textarea:hover {
     margin: 1rem;
 }
 
-/*.label-text {*/
-/*    text-align: center;*/
-/*    font-size: 1.2rem;*/
-/*    font-weight: bold;*/
-/*    color: var(--heading-button-quote);*/
-/*    margin: 0.5rem;*/
-/*}*/
+.label-text {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--heading-button-quote);
+    margin: 0.5rem;
+}
 
 /*No media queries necessary*/

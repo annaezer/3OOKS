@@ -7,7 +7,7 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
-import bookbed from "../../assets/cabin horizontal.png";
+import bookbed from "../../assets/cabin horizontal medium.jpeg";
 import Quote from "../../components/quote/Quote";
 import Footer from "../../components/footer/Footer";
 
@@ -58,7 +58,7 @@ function LogIn() {
                 <div className={styles["background-colour"]}>
                     <div className="outer-container">
                         <section className="inner-container">
-                            <h2 className={styles.heading}>Fill in your username and password to log in</h2>
+                            <h2>Fill in your username and password to log in</h2>
                             <p className={styles.subtext}>No account yet? Sign up <Link to="/signup">here!</Link></p>
 
                             {loading && <p className={styles.loading}>Loading...</p>}
@@ -67,10 +67,11 @@ function LogIn() {
                             <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
                                 {/*Using the Input component again for convenience*/}
                                 <Input
+                                    labelText="Username"
                                     inputType="text"
                                     inputName="name"
                                     inputId="name-field"
-                                    inputPlaceholder="Username"
+                                    inputPlaceholder="Please fill in your username"
                                     validationRules={{
                                         required: {
                                             value: true,
@@ -89,10 +90,11 @@ function LogIn() {
                                     errors={errors}
                                 />
                                 <Input
+                                    labelText="Password"
                                     inputType="password"
                                     inputName="password"
                                     inputId="password-field"
-                                    inputPlaceholder="Password"
+                                    inputPlaceholder="Please fill in your password"
                                     validationRules={{
                                         required: {
                                             value: true,
@@ -110,6 +112,7 @@ function LogIn() {
                                     register={register}
                                     errors={errors}
                                 />
+
                                 {/*Showing the error message in UI*/}
                                 {error &&
                                     <p className={styles["error-message"]}>This combination is not valid, please try

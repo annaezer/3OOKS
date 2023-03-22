@@ -15,9 +15,6 @@
 /*When a user hovers over the list items in the menu it changes color*/
 .nav-bar a:hover {
     color: var(--heading-button-quote);
-    /*border: 0.05rem solid var(--heading-button-quote);*/
-    /*padding: 0.5rem;*/
-    /*border-radius: 1.25rem 0;*/
 }
 
 .menu-options, .mobile-options {
@@ -53,14 +50,13 @@
 
 .active-menu-link {
     color: var(--heading-button-quote);
-    text-decoration: none;
 }
 
 .toggle-menu {
     display: none;
 }
 
-/*When on mobile the menu changes to a fold out hamburger menu*/
+/*When on mobile the menu changes to a fold out menu*/
 @media screen and (max-width: 768px) {
     .menu-options {
         display: none;
@@ -84,7 +80,7 @@
     }
 
     .nav-button:hover {
-        border-style:none;
+        border-style: none;
         color: var(--heading-button-quote);
     }
 

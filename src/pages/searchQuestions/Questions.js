@@ -98,7 +98,7 @@ function Questions() {
                 <div className={styles["background-colour"]}>
                     <div className="outer-container">
                         <section className="inner-container">
-                            <h2 className={styles.heading}>Answer the questions below</h2>
+                            <h2>Answer the questions below</h2>
                             <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
                                 <label className={styles.label} htmlFor="feelings">
                                     How do you feel?
@@ -188,7 +188,8 @@ function Questions() {
                                                     <h3 className={styles.title}>{book.volumeInfo.title}</h3>
                                                 </a>
                                                 <p><span
-                                                    className={styles.keys}>Author: </span> {book.volumeInfo.authors}</p>
+                                                    className={styles.keys}>Author: </span> {book.volumeInfo.authors}
+                                                </p>
                                                 {/*Some books don't have a description and then my function gives an error: fixed it with condition*/}
                                                 <p><span
                                                     className={styles.keys}>Description: </span> {book.volumeInfo.description ? cutOffText(book.volumeInfo.description) : "No description."}
@@ -208,7 +209,8 @@ function Questions() {
                                         </article>
                                     )
                                 })}
-                                <p className={styles["results-message"]}>Not happy with the results? <Link to="/" className={styles.link}>Search
+                                <p className={styles["results-message"]}>Not happy with the results? <Link to="/"
+                                                                                                           className={styles.link}>Search
                                     again</Link> in a different way</p>
                             </div>
                             :

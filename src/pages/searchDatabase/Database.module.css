@@ -1,8 +1,15 @@
 .heading {
+    text-align: center;
     margin-bottom: 2rem;
 }
 
+.form {
+    text-align: center;
+    margin: 2rem;
+}
+
 .message {
+    text-align: center;
     font-size: 1rem;
     font-weight: bolder;
     color: var(--heading-button-quote);

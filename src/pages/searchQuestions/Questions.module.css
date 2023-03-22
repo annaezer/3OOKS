@@ -30,7 +30,7 @@
     border: 0.15rem solid var(--heading-button-quote);
 }
 
-/*Not working somehow*/
+/*Not working somehow - I need a library for this*/
 .select option {
     font-family: "Quicksand";
     color: var(--basic);

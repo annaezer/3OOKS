@@ -64,77 +64,83 @@ function Database() {
             />
             <main>
                 <div className="outer-container">
-                    <section className="inner-container">
-                        <h2 className={styles.heading}>Fill in your query</h2>
-                        {/*If loading show this message*/}
-                        {loading && <p className={styles.message}>Loading your books...</p>}
-                        {/*If there is an error show this message:*/}
-                        {error && <p className={styles.message}>Something went wrong while fetching data</p>}
-                        {/*I use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
-                        <form onSubmit={handleSubmit(handleSearch)}>
-                            {/*Using the Input component again for convenience*/}
-                            <Input
-                                inputType="text"
-                                inputName="search"
-                                inputId="search-field"
-                                inputPlaceholder="Search author, subject or title"
-                                validationRules={{
-                                    required: {
-                                        value: true,
-                                        message: "Fill in your query to start the search!"
-                                    }
-                                }}
-                                register={register}
-                                errors={errors}
-                            />
-                            <Button
-                                type="submit"
-                            >
-                                Search
-                            </Button>
-                        </form>
-                        {/*Mapping over the results to be able to show the right data on the page, but not showing when there are no results*/}
-                        {results.length > 0 &&
-                            <div>
-                                {results.map((result) => {
-                                    return (
-                                        <article className={styles.book} key={result.id}>
-                                            {/*Some books don't have pictures and therefore don't load: fixed it with condition*/}
-                                            <div className={styles["image-container"]}>
-                                                <img className={styles["book-image"]}
-                                                     src={result.volumeInfo.imageLinks !== undefined ? result.volumeInfo.imageLinks.thumbnail : bookCover}
-                                                     alt={result.volumeInfo.title}/>
-                                                <div className={styles.rectangle}></div>
-                                            </div>
-                                            <div className={styles["book-text"]}>
-                                                <a className={styles.link} href={result.volumeInfo.previewLink}>
-                                                    <h3 className={styles.title}>{result.volumeInfo.title}</h3>
-                                                </a>
-                                                <p><span
-                                                    className={styles.keys}> Author: </span>{result.volumeInfo.authors}
-                                                </p>
-                                                {/*Some books don't have a description and then my function gives an error: fixed it with condition*/}
-                                                <p><span
-                                                    className={styles.keys}>Description: </span>{result.volumeInfo.description ? cutOffText(result.volumeInfo.description) : "No description."}
-                                                </p>
-                                                {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
-                                                {auth ? <span className="material-symbols-outlined"
-                                                              onClick={() => addFav(result)}>favorite</span>
-                                                    : <span></span>
-                                                }
-                                            </div>
-                                        </article>
-                                    )
-                                })}
-                                <p className={styles["results-message"]}>Not happy with the results? <Link to="/"
-                                                                                                           className={styles.link}>Search
-                                    again</Link> in a different way</p>
-                            </div>
-                        }
-                        {/*If there is a search done but no results show this message:*/}
-                        {searched && results.length === 0 && (
-                            <p className={styles["results-message"]}>No results, try something else!</p>)}
-                    </section>
+                    <div className="inner-container">
+                        <section>
+                            <h2 className={styles.heading}>Fill in your query</h2>
+                            {/*I use the method HandleSubmit from the Hook Form to be able to use all the functionality*/}
+                            <form onSubmit={handleSubmit(handleSearch)} className={styles.form}>
+                                {/*Using the Input component again for convenience*/}
+                                <Input
+                                    labelText="Search author, subject or title"
+                                    inputType="text"
+                                    inputName="search"
+                                    inputId="search-field"
+                                    inputPlaceholder="Anything your interested in"
+                                    validationRules={{
+                                        required: {
+                                            value: true,
+                                            message: "Fill in your query to start the search!"
+                                        }
+                                    }}
+                                    register={register}
+                                    errors={errors}
+                                />
+                                <Button
+                                    type="submit"
+                                >
+                                    Search
+                                </Button>
+                                {/*If loading show this message*/}
+                                {loading && <p className={styles.message}>Loading your books...</p>}
+                                {/*If there is an error show this message:*/}
+                                {error && <p className={styles.message}>Something went wrong while fetching data</p>}
+
+                            </form>
+                        </section>
+                        <section>
+                            {/*Mapping over the results to be able to show the right data on the page, but not showing when there are no results*/}
+                            {results.length > 0 &&
+                                <div>
+                                    {results.map((result) => {
+                                        return (
+                                            <article className={styles.book} key={result.id}>
+                                                {/*Some books don't have pictures and therefore don't load: fixed it with condition*/}
+                                                <div className={styles["image-container"]}>
+                                                    <img className={styles["book-image"]}
+                                                         src={result.volumeInfo.imageLinks !== undefined ? result.volumeInfo.imageLinks.thumbnail : bookCover}
+                                                         alt={result.volumeInfo.title}/>
+                                                    <div className={styles.rectangle}></div>
+                                                </div>
+                                                <div className={styles["book-text"]}>
+                                                    <a className={styles.link} href={result.volumeInfo.previewLink}>
+                                                        <h3 className={styles.title}>{result.volumeInfo.title}</h3>
+                                                    </a>
+                                                    <p><span
+                                                        className={styles.keys}> Author: </span>{result.volumeInfo.authors}
+                                                    </p>
+                                                    {/*Some books don't have a description and then my function gives an error: fixed it with condition*/}
+                                                    <p><span
+                                                        className={styles.keys}>Description: </span>{result.volumeInfo.description ? cutOffText(result.volumeInfo.description) : "No description."}
+                                                    </p>
+                                                    {/*By clicking on the heart you save the book to your favourites - but function only available if logged in*/}
+                                                    {auth ? <span className="material-symbols-outlined"
+                                                                  onClick={() => addFav(result)}>favorite</span>
+                                                        : <span></span>
+                                                    }
+                                                </div>
+                                            </article>
+                                        )
+                                    })}
+                                    <p className={styles["results-message"]}>Not happy with the results? <Link to="/"
+                                                                                                               className={styles.link}>Search
+                                        again</Link> in a different way</p>
+                                </div>
+                            }
+                            {/*If there is a search done but no results show this message:*/}
+                            {searched && results.length === 0 && (
+                                <p className={styles.message}>No results, try something else!</p>)}
+                        </section>
+                    </div>
                 </div>
             </main>
             <Footer/>

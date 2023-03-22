@@ -19,13 +19,13 @@ html {
     }
 }
 
-/*Setting the fonts with back up options and the background-color*/
+/*Setting the fonts with back up options and the background-color to a bit more creamy ("bookpaper") white*/
 body {
     font-family: "Quicksand", "Helvetica Neue", sans-serif;
     background-color: var(--basic);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
     font-family: "Poiret One", "Monaco", cursive;
 }
 
@@ -41,7 +41,7 @@ h3 {
     font-size: 1.5rem;
 }
 
-/*Making variables from the colors*/
+/*Making variables from the colors so if I want to change them its easy*/
 :root {
     --nav-footer-color: hsl(49, 19%, 62%);
     --heading-button-quote: hsl(16, 40%, 55%);
@@ -59,13 +59,13 @@ h3 {
 }
 
 .inner-container {
-    /*!*Inside container is max 1400px width so it looks good on wide screens too - changing sizes to rem to make it easy to scale. Standard is 16px so 1400px is 87.5rem. It can shrink is the screen gets smaller but can not grow.*/
+    /*!*Inside container is max 1400px width so it looks good on wide screens too - changing sizes to rem to make it easy to scale. Standard is 16px so 1400px is 87.5rem. It can shrink if the screen gets smaller but can not grow.*/
     flex-basis: 87.5rem;
     flex-shrink: 1;
     flex-grow: 0;
     /*Adding margin to left and right so content doesnt get squeezed to edges*/
     margin-inline: 1rem;
-    /*Making this a flex container too so we can position all the children underneath each other.*/
+    /*Making this a flex container too so I can position all the children underneath each other.*/
     display: flex;
     flex-direction: column;
     align-items: center;

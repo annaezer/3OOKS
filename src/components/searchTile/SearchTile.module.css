@@ -7,6 +7,7 @@
     border-radius: 4rem 0rem;
     text-align: center;
 }
+
 /*When user hovers its clear you can click for good ux*/
 .search-button:hover {
     background-color: var(--nav-footer-color);

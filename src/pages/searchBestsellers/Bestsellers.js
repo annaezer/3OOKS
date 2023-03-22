@@ -116,8 +116,10 @@ function Bestsellers() {
                                         </article>
                                     )
                                 })}
-                                <p className={styles["results-message"]}>Not happy with the results? <Link to="/" className={styles.link}>Search
-                                    again</Link> in a different way or check out the other top 3 by clicking the button below!</p>
+                                <p className={styles["results-message"]}>Not happy with the results? <Link to="/"
+                                                                                                           className={styles.link}>Search
+                                    again</Link> in a different way or check out the other top 3 by clicking the button
+                                    below!</p>
                             </div>
                         }
 

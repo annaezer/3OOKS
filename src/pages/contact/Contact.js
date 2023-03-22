@@ -38,10 +38,11 @@ function Contact() {
                             {/*Creating a simple contact form with name and email fields re-using Input components and a textarea for the message*/}
                             <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
                                 <Input
+                                    labelText="Your name"
                                     inputType="text"
                                     inputName="name"
                                     inputId="name-field"
-                                    inputPlaceholder="Your name"
+                                    inputPlaceholder="Please fill in your name"
                                     validationRules={{
                                         required: {
                                             value: true,
@@ -60,10 +61,11 @@ function Contact() {
                                     errors={errors}
                                 />
                                 <Input
+                                    labelText="Your email"
                                     inputType="email"
                                     inputName="email"
                                     inputId="email-field"
-                                    inputPlaceholder="Your email"
+                                    inputPlaceholder="Please fill in your email"
                                     validationRules={{
                                         required: {
                                             value: true,
@@ -78,9 +80,10 @@ function Contact() {
                                     register={register}
                                     errors={errors}
                                 />
-                                <label htmlFor="message-field" className={styles["label-text"]}>
+                                <label htmlFor="message-field" className={styles["label-text"]}>Your message
                                     <textarea
-                                        placeholder="Your message"
+                                        className={styles.textarea}
+                                        placeholder="Type here your message"
                                         id="message-field"
                                         rows="6"
                                         cols="40"
@@ -101,18 +104,16 @@ function Contact() {
                                     >
                 </textarea>
                                 </label>
+
                                 {errors["message-content"] &&
                                     <p className={styles["error-message"]}>{errors["message-content"].message}</p>}
-
+                                <span className={styles["succes-message"]}>{succesMessage}</span>
                                 <Button
                                     className={styles.button}
                                     type="submit"
                                 >
                                     Send
                                 </Button>
-
-                                <span className={styles["succes-message"]}>{succesMessage}</span>
-
                             </form>
                         </section>
                     </div>

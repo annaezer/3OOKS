@@ -10,7 +10,7 @@ function Header({children, img, title}) {
                     <div className={styles.rectangle}></div>
                 </div>
                 <div className={styles["header-text"]}>
-                    <h1>{title}</h1>
+                    <h1 className={styles.heading}>{title}</h1>
                     {children}
                 </div>
             </div>
