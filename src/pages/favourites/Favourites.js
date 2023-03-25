@@ -29,7 +29,7 @@ function Favourites() {
                         <h2>Browse through or adjust your favourite books</h2>
                         {/*Is there an array with favourites show them otherwise show the message "No favourites saved yet"*/}
                         {fav.length > 0 ?
-                            <div>
+                            <div className={styles.height}>
                                 {fav.map((favourite) => {
                                     return (
                                         // Using || or operator because my books come from two different APIs and therefore have different keys to address

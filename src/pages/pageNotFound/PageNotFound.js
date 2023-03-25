@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import styles from "./PageNotFound.module.css";
 import bookonhead from "../../assets/book on head horizontal.jpg";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 function PageNotFound() {
 
@@ -24,6 +25,7 @@ function PageNotFound() {
                     <h2 className={styles["redirect-text"]}>You will be redirected in 3 seconds...</h2>
                 </section>
             </main>
+            <Footer/>
         </>
     );
 }

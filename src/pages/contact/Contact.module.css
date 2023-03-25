@@ -21,7 +21,7 @@
     padding: 1rem;
     margin: 1rem;
     width: 25rem;
-    background: var(--basic);
+    background-color: var(--basic);
     border: 0.08rem solid var(--nav-footer-color);
     border-radius: 1.25rem 0;
     /*Removing the option to extend the textarea with arrow*/
