@@ -8,6 +8,7 @@
     /*I need to position it fixed because on some pages there is not a lot of content when the books havent loaded yet and then footer is not on the bottom of the page*/
     position: fixed;
     bottom: 0;
+    z-index: 2;
     width: 100vw;
     height: 1.8rem;
     padding-inline: 1rem;
