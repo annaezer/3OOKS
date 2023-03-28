@@ -17,7 +17,7 @@ If you like to read more about the application you can click on ‘about’ in t
 ![](/src/assets/screenshot 3OOKS.png)
 
 # How to run this application
-1. When you open this project in WebStorm or another IDE it is important to first install all the packages the project depends on. You can do this by opening the terminal (in WebStorm you can find the Terminal on the bottom of the page: click to open) and typing in the following command:
+1. When you open this project in WebStorm or another IDE it is important to first install all the packages the project depends on. You can do this by opening the terminal (in WebStorm you can find the terminal on the bottom of the page: click to open) and typing in the following command:
 
 `npm install`
 
